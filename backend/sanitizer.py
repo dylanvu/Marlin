@@ -20,9 +20,35 @@ characters in the URL path, except for the domain name.
 the HTML until the number of tokens is below the limit.
 """
 
+from typing import Tuple
 from bs4 import BeautifulSoup
+from urllib.parse import urlparse
+import re
+
+# for testing purposes only
+from test_data.eml_data import EML_DATA
+
+replacement_placeholder = '<REPLACEMENT_PLACEHOLDER>'
+
+
+def extract_html(data: str) -> Tuple[str, str]:
+    '''
+    Extract the html from the eml file. The first return value is the html, the second is the data with the eml file contents, with the html replaced with a placeholder
+    '''
+    # use regex to extract only the html part of the eml file
+    # example HTML: <html>, <html lang="en">, etc
+    # keep the html part of the eml file
+
+    html = re.search(r'<html.*?>.*?</html>', data, re.DOTALL).group()
+
+    # replace the chunk of html that was extracted with a placeholder for later replacement, for a cleaner html
+    data = data.replace(html, replacement_placeholder)
+    return (html, data)
 
 def clean_email(data: str) -> str:
+    '''
+    Clean html in accordance to the research paper
+    '''
     # convert the data to a BeautifulSoup object
     soup = BeautifulSoup(data, 'html.parser')
     # remove comments, style, and script tags
@@ -41,6 +67,23 @@ def clean_email(data: str) -> str:
     for tag in soup.find_all(['font', 'strong', 'b']):
         tag.unwrap()
 
+    # reduce the src attribute of img tags and the href attribute of a tags to 10 characters in the URL path, except for the domain name
+    for tag in soup.find_all(['img', 'a']):
+        if 'src' in tag.attrs:
+            # keep the domain name
+            parsed_url = urlparse(tag['src'])
+            domain = parsed_url.netloc
+            path = parsed_url.path
+            # limit the length of the url path to 10 characters
+            tag['src'] = domain + path[:10]
+        if 'href' in tag.attrs:
+            # keep the domain name
+            parsed_url = urlparse(tag['href'])
+            domain = parsed_url.netloc
+            path = parsed_url.path
+            # limit the length of the url path to 10 characters
+            tag['href'] = domain + path[:10]
+
     # return the cleaned data
     return str(soup)
 
@@ -56,6 +99,7 @@ if __name__ == "__main__":
         </head>
         <body>
             <p class="red"><strong>This is a paragraph</strong></p>
+            <a href="https://www.google.com/reset/testing/jdsaklflkdskdasfklksdjfksdlksdjfklajskldflksjlkjfalkdjf">Google</a>
             <script>
                 console.log("Hello World")
             </script>
@@ -71,3 +115,16 @@ if __name__ == "__main__":
     # <p>This is a paragraph</p>
     # </body>
     # </html>
+
+    # Test with a real email
+    # first, extract the html from the eml file
+    html, data_with_replacement_placeholder = extract_html(EML_DATA)
+    # print(data_with_replacement_placeholder)
+    # then, clean the html
+    cleaned_html = clean_email(html)
+    # print(cleaned_html)
+
+    # replace the placeholder with the cleaned html
+    data = data_with_replacement_placeholder.replace(replacement_placeholder, cleaned_html)
+
+    # print(data)
