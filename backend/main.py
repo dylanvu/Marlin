@@ -1,6 +1,6 @@
 from fastapi import FastAPI
 from pydantic import BaseModel
-from sanitizer import clean_email
+from sanitizer import clean_eml, extract_html
 
 class Email(BaseModel):
     organization: str # the enterprise id or personal id of the user
@@ -16,9 +16,10 @@ async def root():
 
 @app.post("/analyze/")
 async def analyze_email(email: Email):
+    # extract the html from the eml file
     # clean the email
-    cleaned_email = clean_email(email.eml)
-    print(cleaned_email)
+    cleaned_eml = clean_eml(email.eml)
+    print(cleaned_eml)
     # TOOD: call the model to analyze the email
     return {
             "score": 9,

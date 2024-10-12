@@ -45,12 +45,14 @@ def extract_html(data: str) -> Tuple[str, str]:
     data = data.replace(html, replacement_placeholder)
     return (html, data)
 
-def clean_email(data: str) -> str:
+def clean_eml(eml_data: str) -> str:
     '''
     Clean html in accordance to the research paper
     '''
+    # extract the html from the eml file
+    html, data_with_replacement_placeholder = extract_html(eml_data)
     # convert the data to a BeautifulSoup object
-    soup = BeautifulSoup(data, 'html.parser')
+    soup = BeautifulSoup(html, 'html.parser')
     # remove comments, style, and script tags
     for tag in soup.find_all(['comment', 'style', 'script']):
         tag.decompose()
@@ -84,8 +86,11 @@ def clean_email(data: str) -> str:
             # limit the length of the url path to 10 characters
             tag['href'] = domain + path[:10]
 
-    # return the cleaned data
-    return str(soup)
+    # convert the cleaned html back to a string
+    cleaned_html = str(soup)
+    # replace the placeholder with the cleaned html
+    data = data_with_replacement_placeholder.replace(replacement_placeholder, cleaned_html)
+    return data
 
 if __name__ == "__main__":
     data = """
@@ -106,7 +111,7 @@ if __name__ == "__main__":
         </body>
     </html>
     """
-    print(clean_email(data))
+    print(clean_eml(data))
     # Expected output:
     # <html>
     # <head>
@@ -117,14 +122,7 @@ if __name__ == "__main__":
     # </html>
 
     # Test with a real email
-    # first, extract the html from the eml file
-    html, data_with_replacement_placeholder = extract_html(EML_DATA)
-    # print(data_with_replacement_placeholder)
-    # then, clean the html
-    cleaned_html = clean_email(html)
-    # print(cleaned_html)
-
-    # replace the placeholder with the cleaned html
-    data = data_with_replacement_placeholder.replace(replacement_placeholder, cleaned_html)
+    cleaned_eml = clean_eml(EML_DATA)
+    print(cleaned_eml)
 
     # print(data)
