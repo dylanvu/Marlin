@@ -42,65 +42,46 @@ try {
 
 // Function to scrape the email data
 function scrapeEmailData() {
-  // Scrape the profile picture
   const profilePictureElement = document.querySelector("img.ajn");
   const profilePicture = profilePictureElement
     ? (profilePictureElement as HTMLImageElement).src
     : "No profile picture found";
 
-  // Scrape the email content
   const emailContentElement = document.querySelector(".a3s");
   const emailContent = emailContentElement
     ? (emailContentElement as HTMLElement).innerText
     : "No email content found";
 
-  // Log the scraped data
   console.log({
     profilePicture,
     emailContent,
   });
 
-  // Send the data to the background script or React app
   chrome.runtime.sendMessage({
     profilePicture,
     emailContent,
   });
 }
 
-// Function to detect URL changes
+chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
+  if (request.action === "getStarted") {
+    scrapeEmailData();
+    sendResponse({ status: "Email data scraped" });
+  }
+});
+
 let lastUrl = window.location.href;
 
 const detectUrlChange = () => {
   const currentUrl = window.location.href;
   if (currentUrl !== lastUrl) {
     lastUrl = currentUrl;
-    // Trigger the scraping logic when the URL changes
     console.log("URL changed:", currentUrl);
-    observeEmailChanges();
+    setInterval(detectUrlChange, 3000);
+    scrapeEmailData();
   }
 };
 
-// Function to observe email content changes and scrape data
-let observer: MutationObserver;
-const observeEmailChanges = () => {
-  if (observer) {
-    observer.disconnect(); // Stop any existing observer
-  }
-
-  observer = new MutationObserver((mutations) => {
-    mutations.forEach(() => {
-      const profilePictureElement = document.querySelector("img.ajn");
-      const emailContentElement = document.querySelector(".a3s");
-
-      if (profilePictureElement && emailContentElement) {
-        scrapeEmailData();
-        observer.disconnect();
-      }
-    });
-  });
-
-  observer.observe(document.body, { childList: true, subtree: true });
-};
-
-setInterval(detectUrlChange, 5000);
-observeEmailChanges();
+// https://developer.chrome.com/blog/detect-dom-changes-with-mutation-observers
+// everytime something in dom changs this triggers and queries for the email data
+setInterval(detectUrlChange, 10000);
