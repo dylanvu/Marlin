@@ -33,9 +33,6 @@
       ],
       "js": [
         "src/pages/content/index.tsx"
-      ],
-      "css": [
-        "contentStyle.css"
       ]
     }
   ],
