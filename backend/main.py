@@ -1,5 +1,6 @@
 from fastapi import FastAPI
 from pydantic import BaseModel
+from sanitizer import clean_email
 
 class Email(BaseModel):
     organization: str # the enterprise id or personal id of the user
@@ -15,7 +16,9 @@ async def root():
 
 @app.post("/analyze/")
 async def analyze_email(email: Email):
-    print(email)
+    # clean the email
+    cleaned_email = clean_email(email.message)
+    print(cleaned_email)
     # TOOD: call the model to analyze the email
     return {
             "score": 9,
@@ -25,3 +28,4 @@ async def analyze_email(email: Email):
         }
 
 # to run this, run "fastapi dev main.py"
+# served at http://127.0.0.1:8000 
