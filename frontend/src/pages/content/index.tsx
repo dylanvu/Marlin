@@ -1,5 +1,4 @@
 import { createRoot } from "react-dom/client";
-import { c } from "vite/dist/node/types.d-aGj9QkWt";
 
 // Create a div in the DOM
 const div = document.createElement("div");
@@ -38,6 +37,12 @@ try {
 } catch (e) {
   console.error("Error in content script:", e);
 }
+
+
+
+
+
+
 
 // src/contentScript.js
 
@@ -79,66 +84,101 @@ chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
   }
 });
 
+const inEMLPage = () => {
+  // Check if the URL starts with "https://mail.google.com/mail/u/(any number)/#inbox/"
+  const ok = (document.querySelector(".raw_message")! as HTMLElement).innerText;
+  return ok;
+};
 // Detect URL changes and re-run scraping
-let lastUrl = window.location.href;
+if (window.location.href.includes("https://mail.google.com/mail/u/0/?ik=")) {
+  const text = inEMLPage();
+  console.log(text);
+  
+  setTimeout(() => {
+    chrome.runtime.sendMessage({
+      action: "closeTab",
+      url: window.location.href,
+    });
+    isLoading = true;
+  }, 2000);
+}
+let isLoading = true;
 
 function detectUrlChange() {
   const currentUrl = window.location.href;
-  if (currentUrl === lastUrl) {
-    return;
-  }
-  lastUrl = currentUrl;
-  console.log(`URL changed. New URL: ${currentUrl}`);
-  scrapeEmailData();
-  setTimeout(getGmailLink, 4000);
-}
+  // check if we are in the email page
+  const gmailUrlPattern =
+    /^https:\/\/mail\.google\.com\/mail\/u\/\d+\/#inbox\//;
+  if (gmailUrlPattern.test(currentUrl)) {
+    // if we are in the email page, we will repeatedly attempt to scrape the necessary email id keys and inbox keys
+    const [gmid_key, other_part_of_url] = inEmailPage();
+    if (!gmid_key || !other_part_of_url) {
+      console.log("Could not scrape email data. Retrying...");
+      setTimeout(detectUrlChange, 200);
+      return;
+    }
+    // when we have both keys, we will construct the gmail link and open it
+    const gmail_link = `https://mail.google.com/mail/u/0/?ik=${gmid_key}&view=om&permmsgid=msg-${other_part_of_url}`;
 
-setInterval(detectUrlChange, 1000);
-
-// Function to fetch and construct the Gmail link
-const getGmailLink = () => {
-  const currentUrl = window.location.href;
-
-  // Check if the URL starts with "https://mail.google.com/mail/u/(any number)/#inbox/"
-  if (window.location.href.includes("https://mail.google.com/mail/u/0/?ik")) {
-    const ok = (document.querySelector(".raw_message")! as HTMLElement)
-      .innerText;
-
-    console.log(ok);
-    setTimeout(() => {}, 50000);
+    if (isLoading) {
+      isLoading = false;
+      chrome.runtime.sendMessage({ action: "openTab", url: gmail_link }); // Send message to background.js
+    }
+    // check if we are in the speical original email page
+  } else if (currentUrl.includes("https://mail.google.com/mail/u/0/?ik")) {
+    // if we are:
+    // Then we will scrape it
+    console.log("HELP");
+    const text = inEMLPage();
+    console.log(text);
+    // then we will close it
     chrome.runtime.sendMessage({
       action: "closeTab",
       url: window.location.href,
     });
   }
-  const gmailUrlPattern =
-    /^https:\/\/mail\.google\.com\/mail\/u\/\d+\/#inbox\//;
-  if (gmailUrlPattern.test(currentUrl)) {
-    // Perform the logic if the URL matches
-    const getSpan = document
-      .querySelector("h2.hP")
-      ?.getAttribute("data-thread-perm-id");
-    const gmidKey = document
-      .querySelector("link#embedded_data_iframe")
-      ?.getAttribute("data-recorded-src");
-    const values = gmidKey?.split(",");
-    setTimeout(() => {}, 100);
-    const desiredValue = values![1]; // This should give you "61af1dbcb3"
-    const value_stripped_by_3_on_both_sides = desiredValue.slice(3, -3);
-    const gmid_key = value_stripped_by_3_on_both_sides;
-    console.log(gmid_key);
-    const other_part_of_url = getSpan?.slice(7);
-    console.log(other_part_of_url);
 
-    if (gmid_key === undefined || other_part_of_url === undefined) {
-      return;
-    }
-    const gmail_link = `https://mail.google.com/mail/u/0/?ik=${gmid_key}&view=om&permmsgid=msg-${other_part_of_url}`;
+  // then ??? make sure we do not do it again
 
-    console.log(gmail_link);
+  // console.log(`URL changed. New URL: ${currentUrl}`);
+  // console.log("lastUrl", lastUrl);
+  // console.log("currentUrl", currentUrl);
+  // if (currentUrl === lastUrl) {
+  //   return;
+  // }
+  // lastUrl = currentUrl;
+  // scrapeEmailData();
+}
 
-    chrome.runtime.sendMessage({ action: "openTab", url: gmail_link }); // Send message to background.js
+// Function to fetch and construct the Gmail link
+
+const observer = new MutationObserver(detectUrlChange);
+observer.observe(document.body, { childList: true, subtree: false });
+
+const inEmailPage = () => {
+  const getSpan = document
+    .querySelector("h2.hP")
+    ?.getAttribute("data-thread-perm-id");
+
+  const gmidKey = document
+    .querySelector("link#embedded_data_iframe")
+    ?.getAttribute("data-recorded-src");
+  if (!gmidKey) {
+    console.log("Could not get gmid key");
+    return [null, null];
   }
-};
+  const values = gmidKey.split(",");
+  const desiredValue = values[1]; // This should give you "61af1dbcb3"
+  const value_stripped_by_3_on_both_sides = desiredValue.slice(3, -3);
+  const gmid_key = value_stripped_by_3_on_both_sides;
+  console.log(gmid_key);
+  if (!getSpan) {
+    console.log("Could not get span");
+    return [null, null];
+  }
+  const other_part_of_url = getSpan.slice(7);
 
-setTimeout(getGmailLink, 2000);
+  console.log(other_part_of_url);
+
+  return [gmid_key, other_part_of_url];
+};
