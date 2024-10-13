@@ -1,4 +1,3 @@
-# Clean the input using BeautifulSoup
 """
 Technique Taken from this paper:
 https://arxiv.org/pdf/2402.18093
@@ -19,91 +18,97 @@ characters in the URL path, except for the domain name.
 the HTML until the number of tokens is below the limit.
 """
 
-from typing import Tuple
+import re
+import json
+import base64
+import email
+import scrubadub
 from bs4 import BeautifulSoup
 from urllib.parse import urlparse
-import re
-import scrubadub
+from email.message import Message
+from email.parser import HeaderParser
 
-# for testing purposes only
-from test_data.eml_header import EML_HEADER
-from test_data.eml_data import EML_DATA
 
-replacement_placeholder = "<REPLACEMENT_PLACEHOLDER>"
+def cleaning_pipeline(eml_text: str):
+    em = email.message_from_string(eml_text)
+    headers = parse_headers(em)
+    payload = retrieve_payload(em)
+    cleaned_payload = clean_eml(headers + "\n" + payload)
+    return cleaned_payload
+
+
+def parse_headers(eml_data: Message | str):
+    headers = HeaderParser().parsestr(eml_data.as_string())
+    del_header_prefixes = [
+        "X-",
+        "DKIM",
+        "DMARC",
+        "ARC",
+        "Delivered-To",
+        "Received",
+        "To",
+        "Cc",
+        "Bcc",
+    ]
+
+    for header in headers.keys():
+        for prefix in del_header_prefixes:
+            if header.startswith(prefix):
+                del headers[header]
+
+    return json.dumps(dict(headers.items()), indent=4)
+
+
+def retrieve_payload(eml_data: Message | str):
+    if eml_data.is_multipart():
+        payload = ""
+        for part in eml_data.get_payload():
+            payload += "\n" + retrieve_payload(part)
+    else:
+        headers = HeaderParser().parsestr(eml_data.as_string())
+        encoding = headers.get("Content-Transfer-Encoding")
+        payload = eml_data.get_payload()
+        if encoding == "base64":
+            try:
+                payload = base64.b64decode(payload).decode()
+            except:
+                payload = ""
+
+    return payload
+
 
 def scrub_eml_data(eml_data: str) -> str:
     scrubber = scrubadub.Scrubber()
-    # remove date of birth and other optional detectors
-    scrubber.add_detector(scrubadub.detectors.DateOfBirthDetector)
-    scrubber.add_detector(scrubadub.detectors.TextBlobNameDetector)
 
-    # preserve the email address
-    scrubber.remove_detector("email")
+    # add optional and external detectors
+    scrubber.add_detector(scrubadub.detectors.DateOfBirthDetector)
+
+    scrubber.remove_detector(scrubadub.detectors.email.EmailDetector)
+    scrubber.remove_detector(scrubadub.detectors.UrlDetector)
 
     # scrub the eml data
     return scrubber.clean(eml_data)
 
+
 def scrub_email_addresses(eml_data: str) -> str:
-    # TODO: fix this
-    # match the email address patterns
-    email_regex = r"^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$"
+    pattern = r"([a-zA-Z0-9_.+-]+)@([a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+)"
+    cleaned = re.sub(pattern, r"{{USER}}@\2", eml_data)
+    return cleaned
 
-    scrubbed_emails = re.sub(email_regex, "CENSORED", eml_data)
-    return scrubbed_emails
-
-def extract_html(data: str) -> Tuple[str, str]:
-    """
-    Extract the html from the eml file.
-    The first return value is the html, the second is the data with the eml file contents,
-    with the html replaced with a placeholder
-    """
-    # use regex to extract only the html part of the eml file
-    # example HTML: <html>, <html lang="en">, etc
-    # keep the html part of the eml file
-
-    html = re.search(r"<html.*?>.*?</html>", data, re.DOTALL).group()
-
-    # replace the chunk of html that was extracted with a placeholder for later replacement, for a cleaner html
-    data = data.replace(html, replacement_placeholder)
-    return (html, data)
-
-def clean_eml_header(eml_data: str) -> str:
-    '''
-    cleans sensitive information from the EML header
-    '''
-
-    # extract out the email address following "Delievered-To:"
-
-    pattern = r"Delivered-To:\s*([a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,})"
-
-    # search for the email address
-    match = re.search(pattern, eml_data)
-
-    if match:
-        # replace the email address with "CENSORED"
-        eml_data = eml_data.replace(match.group(1), "CENSORED")
-
-    return eml_data
 
 def clean_eml(eml_data: str) -> str:
-    '''
+    """
     Clean both the html in accordance to the research paper and remove identifying information in the EML data and header
-    '''
+    """
 
     # go through an initial cleaning of the EML data
-    scrubbed_data = scrub_eml_data(eml_data)
+    data = scrub_eml_data(eml_data)
 
     # remove email addresses, but keep the domain name
-    scrubbed_emails = scrub_email_addresses(scrubbed_data)
-
-    # extract the html from the eml file
-    html, data_with_replacement_placeholder = extract_html(scrubbed_emails)
-
-    # clean the EML header data
-    data_with_replacement_placeholder = clean_eml_header(data_with_replacement_placeholder)
+    data = scrub_email_addresses(data)
 
     # convert the data to a BeautifulSoup object
-    soup = BeautifulSoup(html, "html.parser")
+    soup = BeautifulSoup(data, "html.parser")
     # remove comments, style, and script tags
     for tag in soup.find_all(["comment", "style", "script"]):
         tag.decompose()
@@ -139,16 +144,11 @@ def clean_eml(eml_data: str) -> str:
 
     # convert the cleaned html back to a string
     cleaned_html = str(soup)
-    # replace the placeholder with the cleaned html
-    data = data_with_replacement_placeholder.replace(
-        replacement_placeholder, cleaned_html
-    )
-    return data
+    return cleaned_html
 
 
 if __name__ == "__main__":
-    data = """
-    <html>
+    data = """<html>
         <head>
             <style>
             .red {
@@ -163,8 +163,8 @@ if __name__ == "__main__":
                 console.log("Hello World")
             </script>
         </body>
-    </html>
-    """
+    </html>"""
+
     # print(clean_eml(data))
     # Expected output:
     # <html>
@@ -179,8 +179,5 @@ if __name__ == "__main__":
     # cleaned_eml = clean_eml(EML_DATA)
     # print(cleaned_eml)
 
-    print(clean_eml_header(EML_HEADER))
-
-    # print(data)
-    cleaned_eml = clean_eml(EML_DATA)
+    cleaned_eml = clean_eml(data)
     print(cleaned_eml)

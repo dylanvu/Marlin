@@ -3,10 +3,10 @@ from pydantic import BaseModel, Field
 
 
 class Observation(BaseModel):
-    description: str = Field("description of the observation, using references where possible")
-    severity: int = Field(
-        "severity of the observation, on a scale from 1 to 3, 1 being harmless and 3 being severe"
+    description: str = Field(
+        "description of the observation, using references where possible"
     )
+    severity: int = Field("severity of the observation, on a scale from 1 to 3")
 
 
 class Email(BaseModel):
