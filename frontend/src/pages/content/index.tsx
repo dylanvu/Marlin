@@ -1,60 +1,76 @@
 import { createRoot } from "react-dom/client";
 
-// Create a div in the DOM
+// function createNotification() {
 
-/*
+//   // create a div, and make it the root
+//   const div = document.createElement("div");
+//   div.id = "__root";
 
-import { createRoot } from "react-dom/client";
+//   // attach a shadow div (sub-div) named shadowRoot to out root div
+//   const shadowRoot = div.attachShadow({ mode: "open" });
 
-function createDivInDOM() {
+//   // add our root div to the body
+//   document.body.appendChild(div);
 
-  const div = document.createElement("div");
-  div.id = "__root";
-  const shadowRoot = div.attachShadow({ mode: "open" });
+//   // create a sub-div of the shadow root div
+//   const shadowDiv = document.createElement("div");
+//   shadowRoot.appendChild(shadowDiv);
 
-  document.body.appendChild(div);
+//   // apply a style sheet to the shadow root div
+//   // const style = document.createElement("style");
+//   // style.textContent = ``;
+//   // shadowRoot.appendChild(style);
 
-  const shadowDiv = document.createElement("div");
-  shadowRoot.appendChild(shadowDiv);
-  const style = document.createElement("style");
-  style.textContent = `
-    .shadow-container {
+//   return shadowDiv;
+
+// }
+
+// function addNotification() {
+//   const rootContainer = document.querySelector('#__root');
+//   if (!rootContainer) throw new Error("Can't find Content root element");
+//   const root = createRoot(rootContainer);
+//   root.render(
+//     <div className="shadow-container">Content script loaded in Shadow DOM</div>
+//   );
+// }
+
+function addLoadingButton() {
+  const targetDiv = document.querySelector('.aeF');
+  if (targetDiv) {
+    const button = document.createElement('button');
+    button.textContent = 'Loading...';
+    button.style.cssText = `
       position: absolute;
-      bottom: 0;
-      left: 0;
-      font-size: 1.125rem; // text-lg
-      color: black;
-      background-color: #fbbf24; // amber-400
-      z-index: 50;
-      padding: 0.5rem;
-      border-radius: 0.25rem;
-    }
-  `;
-  shadowRoot.appendChild(style);
-
-  const rootContainer = shadowDiv;
-  if (!rootContainer) throw new Error("Can't find Content root element");
-  const root = createRoot(rootContainer);
-  root.render(
-    <div className="shadow-container">Content script loaded in Shadow DOM</div>
-  );
-
+      top: 10px;
+      right: 10px;
+      padding: 5px 10px;
+      background-color: #4285f4;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    `;
+    targetDiv.appendChild(button);
+  }
 }
-  
-*/
+addLoadingButton();
 
-try {
-  console.log("Content script loaded successfully.");
-  // createDivInDOM();
-} catch (e) {
-  console.error("Error in content script:", e);
+function notif() {}
+
+function init() {
+  try {
+    notif();
+    // createNotification();
+    // addNotification();
+    console.log("Content script loaded successfully.");
+  } catch (e) {
+    console.error(`Error in content script: ${e}`);
+  }
 }
 
+init();
 
-
-
-
-
+/* *********************************** DO NOT EDIT ANYTHING BELOW THIS *********************************** */
 
 // src/contentScript.js
 
@@ -132,10 +148,7 @@ function detectUrlChange() {
     // when we have both keys, we will construct the gmail link and open it
     const gmail_link = `https://mail.google.com/mail/u/0/?ik=${gmid_key}&view=om&permmsgid=msg-${other_part_of_url}`;
 
-    if (isLoading) {
-      isLoading = false;
-      chrome.runtime.sendMessage({ action: "openTab", url: gmail_link }); // Send message to background.js
-    }
+    chrome.runtime.sendMessage({ action: "openTab", url: gmail_link }); // Send message to background.js
     // check if we are in the speical original email page
   } else if (currentUrl.includes("https://mail.google.com/mail/u/0/?ik")) {
     // if we are:
@@ -149,24 +162,10 @@ function detectUrlChange() {
       url: window.location.href,
     });
   }
-
-  // then ??? make sure we do not do it again
-
-  // console.log(`URL changed. New URL: ${currentUrl}`);
-  // console.log("lastUrl", lastUrl);
-  // console.log("currentUrl", currentUrl);
-  // if (currentUrl === lastUrl) {
-  //   return;
-  // }
-  // lastUrl = currentUrl;
-  // scrapeEmailData();
 }
-
-// Function to fetch and construct the Gmail link
 
 const observer = new MutationObserver(detectUrlChange);
 observer.observe(document.body, { childList: true, subtree: false });
-
 const inEmailPage = () => {
   const getSpan = document
     .querySelector("h2.hP")
@@ -194,3 +193,5 @@ const inEmailPage = () => {
 
   return [gmid_key, other_part_of_url];
 };
+
+detectUrlChange();
