@@ -23,6 +23,7 @@ from typing import Tuple
 from bs4 import BeautifulSoup
 from urllib.parse import urlparse
 import re
+import scrubadub
 
 # for testing purposes only
 from test_data.eml_header import EML_HEADER
@@ -30,6 +31,25 @@ from test_data.eml_data import EML_DATA
 
 replacement_placeholder = "<REPLACEMENT_PLACEHOLDER>"
 
+def scrub_eml_data(eml_data: str) -> str:
+    scrubber = scrubadub.Scrubber()
+    # remove date of birth and other optional detectors
+    scrubber.add_detector(scrubadub.detectors.DateOfBirthDetector)
+    scrubber.add_detector(scrubadub.detectors.TextBlobNameDetector)
+
+    # preserve the email address
+    scrubber.remove_detector("email")
+
+    # scrub the eml data
+    return scrubber.clean(eml_data)
+
+def scrub_email_addresses(eml_data: str) -> str:
+    # TODO: fix this
+    # match the email address patterns
+    email_regex = r"^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$"
+
+    scrubbed_emails = re.sub(email_regex, "CENSORED", eml_data)
+    return scrubbed_emails
 
 def extract_html(data: str) -> Tuple[str, str]:
     """
@@ -67,11 +87,17 @@ def clean_eml_header(eml_data: str) -> str:
 
 def clean_eml(eml_data: str) -> str:
     '''
-    Clean both the html in accordance to the research paper and remove identifying information in the EML header
+    Clean both the html in accordance to the research paper and remove identifying information in the EML data and header
     '''
 
+    # go through an initial cleaning of the EML data
+    scrubbed_data = scrub_eml_data(eml_data)
+
+    # remove email addresses, but keep the domain name
+    scrubbed_emails = scrub_email_addresses(scrubbed_data)
+
     # extract the html from the eml file
-    html, data_with_replacement_placeholder = extract_html(eml_data)
+    html, data_with_replacement_placeholder = extract_html(scrubbed_emails)
 
     # clean the EML header data
     data_with_replacement_placeholder = clean_eml_header(data_with_replacement_placeholder)
