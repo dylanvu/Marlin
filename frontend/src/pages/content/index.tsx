@@ -154,10 +154,8 @@ function detectUrlChange() {
   } else if (currentUrl.startsWith("https://mail.google.com/mail/u/0/?ik")) {
     // if we are:
     // Then we will scrape it
-    console.log("HELP");
     const text = inEMLPage();
-    console.log(text);
-    // chrome.runtime.sendMessage({ action: "startInference", input: text });
+    chrome.runtime.sendMessage({ action: "startInference", input: text });
     // then we will close it
     chrome.runtime.sendMessage({
       action: "closeTab",
