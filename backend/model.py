@@ -1,5 +1,4 @@
 import os
-import json
 import requests
 from dotenv import load_dotenv
 
@@ -10,7 +9,6 @@ load_dotenv()
 
 API_URL = "https://llm.kindo.ai/v1/chat/completions"
 MODEL = "azure/gpt-4o"
-MESSAGES = [{"role": "user", "content": "Hello, world!"}]
 HEADERS = {
     "Content-Type": "application/json",
     "api-key": os.getenv("KINDO_API_KEY"),

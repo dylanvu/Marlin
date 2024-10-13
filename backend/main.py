@@ -1,8 +1,9 @@
 from fastapi import FastAPI
 from pydantic import BaseModel
-from sanitizer import clean_eml, extract_html
 
 from model import chat
+from sanitizer import clean_eml
+from test_data.eml_data import EML_DATA
 
 
 class Email(BaseModel):
@@ -19,18 +20,12 @@ async def root():
 
 
 @app.post("/analyze/")
-async def analyze_email(email: Email):
-    # extract the html from the eml file
-    # clean the email
-    cleaned_eml = clean_eml(email.eml)
+async def analyze_email():
+    header_removed = "\n".join(EML_DATA.split("\n\n\n")[1:])
+    print(header_removed)
+    cleaned_eml = clean_eml(header_removed)
     print(cleaned_eml)
-    # TOOD: call the model to analyze the email
-    return {
-        "score": 9,
-        "is_phishing": True,
-        "brand_impersonated": "Google",
-        "rationale": "The email is phishing because it is impersonating Google",
-    }
+    return chat(cleaned_eml)
 
 
 # to run this, run "fastapi dev main.py"
