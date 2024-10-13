@@ -1,4 +1,4 @@
-EML_DATA="""
+EML_DATA = """
 Delivered-To: redacted@gmail.com
 Received: by 2002:ac8:525a:0:b0:457:e1df:b184 with SMTP id y26csp47201qtn;
         Tue, 24 Sep 2024 17:00:29 -0700 (PDT)
