@@ -1,39 +1,51 @@
 import { createRoot } from "react-dom/client";
 
 // Create a div in the DOM
-const div = document.createElement("div");
-div.id = "__root";
-const shadowRoot = div.attachShadow({ mode: "open" });
 
-document.body.appendChild(div);
+/*
 
-const shadowDiv = document.createElement("div");
-shadowRoot.appendChild(shadowDiv);
-const style = document.createElement("style");
-style.textContent = `
-  .shadow-container {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    font-size: 1.125rem; /* text-lg */
-    color: black;
-    background-color: #fbbf24; /* amber-400 */
-    z-index: 50;
-    padding: 0.5rem;
-    border-radius: 0.25rem;
-  }
-`;
-shadowRoot.appendChild(style);
+import { createRoot } from "react-dom/client";
 
-const rootContainer = shadowDiv;
-if (!rootContainer) throw new Error("Can't find Content root element");
-const root = createRoot(rootContainer);
-root.render(
-  <div className="shadow-container">Content script loaded in Shadow DOM</div>
-);
+function createDivInDOM() {
+
+  const div = document.createElement("div");
+  div.id = "__root";
+  const shadowRoot = div.attachShadow({ mode: "open" });
+
+  document.body.appendChild(div);
+
+  const shadowDiv = document.createElement("div");
+  shadowRoot.appendChild(shadowDiv);
+  const style = document.createElement("style");
+  style.textContent = `
+    .shadow-container {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      font-size: 1.125rem; // text-lg
+      color: black;
+      background-color: #fbbf24; // amber-400
+      z-index: 50;
+      padding: 0.5rem;
+      border-radius: 0.25rem;
+    }
+  `;
+  shadowRoot.appendChild(style);
+
+  const rootContainer = shadowDiv;
+  if (!rootContainer) throw new Error("Can't find Content root element");
+  const root = createRoot(rootContainer);
+  root.render(
+    <div className="shadow-container">Content script loaded in Shadow DOM</div>
+  );
+
+}
+  
+*/
 
 try {
   console.log("Content script loaded successfully.");
+  // createDivInDOM();
 } catch (e) {
   console.error("Error in content script:", e);
 }

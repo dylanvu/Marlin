@@ -9,3 +9,14 @@ declare module '*.json' {
   const content: string;
   export default content;
 }
+
+// Custom types
+
+type barColor = "green" | "yellow" | "red";
+
+interface BarContent {
+  suspiciousPortion: string;
+  reason: string;
+  action: string;
+  color: barColor;
+}
