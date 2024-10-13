@@ -1,5 +1,3 @@
-import { createRoot } from "react-dom/client";
-
 // Create a div in the DOM
 
 /*
@@ -40,7 +38,6 @@ function createDivInDOM() {
   );
 
 }
-  
 */
 
 try {
@@ -49,12 +46,6 @@ try {
 } catch (e) {
   console.error("Error in content script:", e);
 }
-
-
-
-
-
-
 
 // src/contentScript.js
 
@@ -102,19 +93,6 @@ const inEMLPage = () => {
   return ok;
 };
 // Detect URL changes and re-run scraping
-if (window.location.href.includes("https://mail.google.com/mail/u/0/?ik=")) {
-  const text = inEMLPage();
-  console.log(text);
-  
-  setTimeout(() => {
-    chrome.runtime.sendMessage({
-      action: "closeTab",
-      url: window.location.href,
-    });
-    isLoading = true;
-  }, 2000);
-}
-let isLoading = true;
 
 function detectUrlChange() {
   const currentUrl = window.location.href;
@@ -133,7 +111,6 @@ function detectUrlChange() {
     const gmail_link = `https://mail.google.com/mail/u/0/?ik=${gmid_key}&view=om&permmsgid=msg-${other_part_of_url}`;
 
     if (isLoading) {
-      isLoading = false;
       chrome.runtime.sendMessage({ action: "openTab", url: gmail_link }); // Send message to background.js
     }
     // check if we are in the speical original email page
@@ -149,24 +126,10 @@ function detectUrlChange() {
       url: window.location.href,
     });
   }
-
-  // then ??? make sure we do not do it again
-
-  // console.log(`URL changed. New URL: ${currentUrl}`);
-  // console.log("lastUrl", lastUrl);
-  // console.log("currentUrl", currentUrl);
-  // if (currentUrl === lastUrl) {
-  //   return;
-  // }
-  // lastUrl = currentUrl;
-  // scrapeEmailData();
 }
-
-// Function to fetch and construct the Gmail link
 
 const observer = new MutationObserver(detectUrlChange);
 observer.observe(document.body, { childList: true, subtree: false });
-
 const inEmailPage = () => {
   const getSpan = document
     .querySelector("h2.hP")
