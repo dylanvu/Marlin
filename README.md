@@ -1,4 +1,4 @@
-<h1 align="center">Cerebral-Beach-Hacks-2024</h1>
+<h1 align="center">Marlin</h1>
 
 <h3 align="center">A chrome extension leveraging AI to flag email phishing attempts while maintaining privacy!</h3>
 
