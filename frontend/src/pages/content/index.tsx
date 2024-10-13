@@ -37,21 +37,40 @@ import { createRoot } from "react-dom/client";
 chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
   const action = request.action;
   if (action == "receiveInference") {
-    chrome.storage.local.get(["inferenceResult"], (result) => {
-      console.log("result:", result);
-    });
-
-    // const buttonState = request.buttonState;
-    // document
-    //   .getElementById("loading-button")
-    //   ?.style.setProperty("background-color", buttonState);
+    console.log("Received inference result");
+    loadingButton();
   }
 });
 
-function addLoadingButton() {
-  // check if we already have the loading-button id element
+function resetButton() {
   const loadingButton = document.getElementById("loading-button");
-  if (loadingButton) return;
+  if (loadingButton) {
+    loadingButton.style.setProperty("background-color", "#4285f4");
+    loadingButton.textContent = "Loading...";
+  }
+}
+
+function loadingButton() {
+  // check if we already have the loading-button id element
+  const loadingButton = document.getElementById("loading-button")!;
+  if (loadingButton) {
+    chrome.storage.local.get(["inferenceResult"], (result) => {
+      const inferenceResult = result.inferenceResult;
+      const score = inferenceResult.phishing_score;
+      if (score > 7) {
+        loadingButton.style.setProperty("background-color", "red");
+        loadingButton.textContent = "Dangerous";
+      } else if (score > 3) {
+        loadingButton.style.setProperty("background-color", "yellow");
+        loadingButton.textContent = "Risky";
+      } else {
+        loadingButton.style.setProperty("background-color", "green");
+        loadingButton.textContent = "Safe";
+      }
+    });
+    return;
+  }
+
   const targetDiv = document.querySelector(".aeF");
   if (targetDiv) {
     const button = document.createElement("button");
@@ -69,6 +88,7 @@ function addLoadingButton() {
       cursor: pointer;
     `;
     targetDiv.appendChild(button);
+    button.addEventListener("click", loadingButton);
   }
 }
 
@@ -131,19 +151,27 @@ const inEMLPage = () => {
 
 // Detect URL changes and re-run scraping
 function detectUrlChange() {
-  addLoadingButton();
   console.log("in detectUrlChange");
   const currentUrl = window.location.href;
   console.log("currentUrl:", currentUrl);
+  loadingButton();
   // check if we are in the email page
+  const gmailHomePattern =
+    /^https:\/\/mail\.google\.com\/mail\/u\/\d+\/#inbox$/;
   const gmailUrlPattern =
     /^https:\/\/mail\.google\.com\/mail\/u\/\d+\/#inbox\//;
-  if (gmailUrlPattern.test(currentUrl)) {
+  if (gmailHomePattern.test(currentUrl)) {
+    console.log("Detected Gmail Home page");
+    chrome.storage.local.clear().then(() => {
+      resetButton();
+    });
+  } else if (gmailUrlPattern.test(currentUrl)) {
+    console.log("Detected email page");
     // if we are in the email page, we will repeatedly attempt to scrape the necessary email id keys and inbox keys
     const [gmid_key, other_part_of_url] = inEmailPage();
     if (!gmid_key || !other_part_of_url) {
       console.log("Could not scrape email data. Retrying...");
-      setTimeout(detectUrlChange, 1000);
+      setTimeout(detectUrlChange, 5000);
       return;
     }
     // when we have both keys, we will construct the gmail link and open it
