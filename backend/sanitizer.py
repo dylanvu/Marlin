@@ -26,6 +26,7 @@ from urllib.parse import urlparse
 import re
 
 # for testing purposes only
+from test_data.eml_header import EML_HEADER
 from test_data.eml_data import EML_DATA
 
 replacement_placeholder = '<REPLACEMENT_PLACEHOLDER>'
@@ -45,12 +46,35 @@ def extract_html(data: str) -> Tuple[str, str]:
     data = data.replace(html, replacement_placeholder)
     return (html, data)
 
+def clean_eml_header(eml_data: str) -> str:
+    '''
+    cleans sensitive information from the EML header
+    '''
+
+    # extract out the email address following "Delievered-To:"
+
+    pattern = r"Delivered-To:\s*([a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,})"
+
+    # search for the email address
+    match = re.search(pattern, eml_data)
+
+    if match:
+        # replace the email address with "CENSORED"
+        eml_data = eml_data.replace(match.group(1), "CENSORED")
+
+    return eml_data
+
 def clean_eml(eml_data: str) -> str:
     '''
-    Clean html in accordance to the research paper
+    Clean both the html in accordance to the research paper and remove identifying information in the EML header
     '''
+
     # extract the html from the eml file
     html, data_with_replacement_placeholder = extract_html(eml_data)
+
+    # clean the EML header data
+    data_with_replacement_placeholder = clean_eml_header(data_with_replacement_placeholder)
+
     # convert the data to a BeautifulSoup object
     soup = BeautifulSoup(html, 'html.parser')
     # remove comments, style, and script tags
@@ -111,7 +135,7 @@ if __name__ == "__main__":
         </body>
     </html>
     """
-    print(clean_eml(data))
+    # print(clean_eml(data))
     # Expected output:
     # <html>
     # <head>
@@ -122,7 +146,9 @@ if __name__ == "__main__":
     # </html>
 
     # Test with a real email
-    cleaned_eml = clean_eml(EML_DATA)
-    print(cleaned_eml)
+    # cleaned_eml = clean_eml(EML_DATA)
+    # print(cleaned_eml)
+
+    print(clean_eml_header(EML_HEADER))
 
     # print(data)
