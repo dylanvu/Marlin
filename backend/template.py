@@ -2,6 +2,13 @@ from langchain_core.output_parsers import JsonOutputParser
 from pydantic import BaseModel, Field
 
 
+class Observation(BaseModel):
+    description: str = Field("description of the observation")
+    severity: int = Field(
+        "severity of the observation, on a scale from 1 to 3, 1 being harmless and 3 being severe"
+    )
+
+
 class Email(BaseModel):
     is_phishing: bool = Field(
         description="a boolean value indicating whether the email is phishing (true) or legitimate (false)"
@@ -12,9 +19,7 @@ class Email(BaseModel):
     brand_impersonated: str = Field(
         "brand name associated with the email, if applicable"
     )
-    rationales: list[str] = Field(
-        "detailed rationales for the determination, up to 500 words"
-    )
+    observations: list[Observation] = Field(...)
     brief_reason: str = Field("brief reason for the determination")
 
 
