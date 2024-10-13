@@ -1,39 +1,5 @@
 import { createRoot } from "react-dom/client";
 
-// function createNotification() {
-
-//   // create a div, and make it the root
-//   const div = document.createElement("div");
-//   div.id = "__root";
-
-//   // attach a shadow div (sub-div) named shadowRoot to out root div
-//   const shadowRoot = div.attachShadow({ mode: "open" });
-
-//   // add our root div to the body
-//   document.body.appendChild(div);
-
-//   // create a sub-div of the shadow root div
-//   const shadowDiv = document.createElement("div");
-//   shadowRoot.appendChild(shadowDiv);
-
-//   // apply a style sheet to the shadow root div
-//   // const style = document.createElement("style");
-//   // style.textContent = ``;
-//   // shadowRoot.appendChild(style);
-
-//   return shadowDiv;
-
-// }
-
-// function addNotification() {
-//   const rootContainer = document.querySelector('#__root');
-//   if (!rootContainer) throw new Error("Can't find Content root element");
-//   const root = createRoot(rootContainer);
-//   root.render(
-//     <div className="shadow-container">Content script loaded in Shadow DOM</div>
-//   );
-// }
-
 chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
   const action = request.action;
   if (action == "receiveInference") {
@@ -94,13 +60,8 @@ function loadingButton() {
 
 console.log("Loading button added");
 
-function notif() {}
-
 function init() {
   try {
-    notif();
-    // createNotification();
-    // addNotification();
     console.log("Content script loaded successfully.");
   } catch (e) {
     console.error(`Error in content script: ${e}`);
@@ -108,40 +69,6 @@ function init() {
 }
 
 init();
-
-/* *********************************** DO NOT EDIT ANYTHING BELOW THIS *********************************** */
-
-// src/contentScript.js
-
-// Function to scrape email data
-function scrapeEmailData() {
-  const subjectLineElement = document.querySelector("h2.hP");
-  const subjectLine = subjectLineElement
-    ? (subjectLineElement as HTMLElement).innerText
-    : "No subject line found";
-
-  const profilePictureElement = document.querySelector("img.ajn");
-  const profilePicture = profilePictureElement
-    ? (profilePictureElement as HTMLImageElement).src
-    : "No profile picture found";
-
-  const emailAddressElement = document.querySelector(".go");
-  const emailAddress = emailAddressElement
-    ? (emailAddressElement as HTMLElement).innerText
-    : "No email address found";
-
-  const emailContentElement = document.querySelector(".a3s");
-  const emailContent = emailContentElement
-    ? (emailContentElement as HTMLElement).innerText
-    : "No email content found";
-
-  console.log({
-    subjectLine,
-    profilePicture,
-    emailAddress,
-    emailContent,
-  });
-}
 
 const inEMLPage = () => {
   // Check if the URL starts with "https://mail.google.com/mail/u/(any number)/#inbox/"
