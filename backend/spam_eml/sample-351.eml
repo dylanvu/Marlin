@@ -1,0 +1,182 @@
+Received: from SCYP215MB2215.LAMP215.PROD.OUTLOOK.COM (2603:10d6:300:47::14)
+ by CPWP215MB2144.LAMP215.PROD.OUTLOOK.COM with HTTPS; Wed, 13 Sep 2023
+ 00:26:01 +0000
+Received: from PH0PR07CA0008.namprd07.prod.outlook.com (2603:10b6:510:5::13)
+ by SCYP215MB2215.LAMP215.PROD.OUTLOOK.COM (2603:10d6:300:47::14) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.6792.19; Wed, 13 Sep
+ 2023 00:26:00 +0000
+Received: from PH7PR15MB5223.namprd15.prod.outlook.com
+ (2603:10b6:510:5:cafe::78) by PH0PR07CA0008.outlook.office365.com
+ (2603:10b6:510:5::13) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.6792.19 via Frontend
+ Transport; Wed, 13 Sep 2023 00:25:59 +0000
+Received: from AM0PR06CA0084.eurprd06.prod.outlook.com (2603:10a6:208:fa::25)
+ by PH7PR15MB5223.namprd15.prod.outlook.com (2603:10b6:510:136::11) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.6745.34; Wed, 13 Sep
+ 2023 00:25:55 +0000
+Received: from AM6EUR05FT040.eop-eur05.prod.protection.outlook.com
+ (2603:10a6:208:fa:cafe::72) by AM0PR06CA0084.outlook.office365.com
+ (2603:10a6:208:fa::25) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.6768.35 via Frontend
+ Transport; Wed, 13 Sep 2023 00:25:54 +0000
+Authentication-Results: spf=pass (sender IP is 131.0.44.51)
+ smtp.mailfrom=embrapav.com.br; dkim=none (message not signed)
+ header.d=none;dmarc=pass action=none
+ header.from=embrapav.com.br;compauth=pass reason=100
+Received-SPF: Pass (protection.outlook.com: domain of embrapav.com.br
+ designates 131.0.44.51 as permitted sender) receiver=protection.outlook.com;
+ client-ip=131.0.44.51; helo=mail.pontonettelecom.com.br; pr=C
+Received: from mail.pontonettelecom.com.br (131.0.44.51) by
+ AM6EUR05FT040.mail.protection.outlook.com (10.233.241.165) with Microsoft
+ SMTP Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.20.6792.17 via Frontend Transport; Wed, 13 Sep 2023 00:25:52 +0000
+X-IncomingTopHeaderMarker:
+ OriginalChecksum:BD50BDE2C189C0BB7A7EDB551B90814D07BAB39F274AC26B1D407C40B498FF5B;UpperCasedChecksum:7B1D96DE332E14A0DF56EDDCBF86C07BCC6B40F1D25A6C70E8580888A5741B48;SizeAsReceived:1138;Count:16
+Received: from localhost (localhost [127.0.0.1])
+	by mail.pontonettelecom.com.br (Postfix) with ESMTP id 703283C02F7A;
+	Tue, 12 Sep 2023 21:25:37 -0300 (-03)
+X-Virus-Scanned: Debian amavisd-new at mail.pontonettelecom.com.br
+Received: from mail.pontonettelecom.com.br ([127.0.0.1])
+	by localhost (mail.pontonettelecom.com.br [127.0.0.1]) (amavisd-new, port 10026)
+	with LMTP id L6LqtJ7NpRLB; Tue, 12 Sep 2023 21:25:37 -0300 (-03)
+Received: from User (unknown [194.180.48.244])
+	(Authenticated sender: nelson@embrapav.com.br)
+	by mail.pontonettelecom.com.br (Postfix) with ESMTPA id 114723C02F03;
+	Tue, 12 Sep 2023 21:13:33 -0300 (-03)
+Reply-To: <mrkennedyuz@gmail.com>
+From: "Mr.Kennedy Uzoka"<nelson@embrapav.com.br>
+Subject: KINDLY RESPOND..REF/MYH124155
+Date: Tue, 12 Sep 2023 17:14:01 -0700
+Content-Type: text/html;
+	charset="Windows-1251"
+Content-Transfer-Encoding: 7bit
+X-Mailer: Microsoft Outlook Express 6.00.2600.0000
+X-MimeOLE: Produced By Microsoft MimeOLE V6.00.2600.0000
+Message-Id: <20230913002537.703283C02F7A@mail.pontonettelecom.com.br>
+X-IncomingHeaderCount: 16
+To: Undisclosed recipients:;
+Return-Path: nelson@embrapav.com.br
+X-MS-Exchange-Organization-ExpirationStartTime: 13 Sep 2023 00:25:53.3249
+ (UTC)
+X-MS-Exchange-Organization-ExpirationStartTimeReason: OriginalSubmit
+X-MS-Exchange-Organization-ExpirationInterval: 1:00:00:00.0000000
+X-MS-Exchange-Organization-ExpirationIntervalReason: OriginalSubmit
+X-MS-Exchange-Organization-Network-Message-Id:
+ 71eec418-4aa0-4a2f-d433-08dbb3effd6a
+X-EOPAttributedMessage: 0
+X-EOPTenantAttributedMessage: 84df9e7f-e9f6-40af-b435-aaaaaaaaaaaa:0
+X-MS-Exchange-Organization-MessageDirectionality: Incoming
+X-MS-PublicTrafficType: Email
+X-MS-TrafficTypeDiagnostic:
+ AM6EUR05FT040:EE_|PH7PR15MB5223:EE_|SCYP215MB2215:EE_|CPWP215MB2144:EE_
+X-MS-Office365-Filtering-Correlation-Id: 71eec418-4aa0-4a2f-d433-08dbb3effd6a
+X-MS-Exchange-EOPDirect: true
+X-Sender-IP: 131.0.44.51
+X-SID-PRA: NELSON@EMBRAPAV.COM.BR
+X-SID-Result: PASS
+X-MS-Exchange-Organization-PCL: 2
+X-MS-Exchange-Organization-SCL: 5
+X-Microsoft-Antispam: BCL:9;
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 13 Sep 2023 00:25:52.4651
+ (UTC)
+X-MS-Exchange-CrossTenant-Network-Message-Id: 71eec418-4aa0-4a2f-d433-08dbb3effd6a
+X-MS-Exchange-CrossTenant-Id: 84df9e7f-e9f6-40af-b435-aaaaaaaaaaaa
+X-MS-Exchange-CrossTenant-AuthSource: AM6EUR05FT040.eop-eur05.prod.protection.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Anonymous
+X-MS-Exchange-CrossTenant-FromEntityHeader: Internet
+X-MS-Exchange-CrossTenant-RMS-PersistedConsumerOrg: 00000000-0000-0000-0000-000000000000
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: PH7PR15MB5223
+X-MS-Exchange-Organization-AuthSource:
+ AM6EUR05FT040.eop-eur05.prod.protection.outlook.com
+X-MS-Exchange-Organization-AuthAs: Anonymous
+X-MS-UserLastLogonTime: 9/13/2023 12:14:58 AM
+X-MS-Exchange-Transport-EndToEndLatency: 00:00:09.0587529
+X-MS-Exchange-Processed-By-BccFoldering: 15.20.6768.024
+X-Microsoft-Antispam-Mailbox-Delivery:
+	ucf:0;jmr:0;ex:0;auth:1;dest:J;OFR:SpamFilterAuthJ;ENG:(5062000305)(920221119095)(90000117)(920221120095)(90005022)(91005020)(91035115)(9050020)(9100341)(944500132)(2008001134)(2008121020)(4810010)(4910033)(9610028)(9560006)(10180021)(9320005)(9245025)(120001);RF:JunkEmail;
+X-Message-Info:
+	6hMotsjLow8tCacANDFIPxVFK5IWbneQPktA3UJ1JLJwnUydPoANjL24ZLTnF6p9LeGTUPN6HYcPeg1ZJHlKQhyCiYIpPS4oBw4H2OVpBu5BMy9E9slSw9TllWUWw8LsIlyRSgcqjtw0Oxye/hyp3Ay80YMZEfEsij3VSOKUezFWGGHYjEJEUAmqDNG3iv76KHqh/e70nd1ZEeBrYTxMpw==
+X-Message-Delivery: Vj0xLjE7dXM9MDtsPTA7YT0wO0Q9MjtHRD0yO1NDTD02
+X-Microsoft-Antispam-Message-Info:
+	=?windows-1251?Q?ilURhnonRdEp+uBlEB36BS/mqiw0J89QODoi6DCAkfdT2iMi0bfUnAmt?=
+ =?windows-1251?Q?Iz+0p1AF1Sml9FlhCGFpl1uuEG3KdHUQO/JFUXwd/bYAoszOhgYyZc+w?=
+ =?windows-1251?Q?Uw3qZzhEZOAQ1UWFhMpifWICSJoYYDxjnzJj/BNygXO0HGil6SzS4Ft9?=
+ =?windows-1251?Q?cYli1DiyPKy44Vu60zRijetmxnQkNAM11qb/dBkrPpHFITao0aTy7Xif?=
+ =?windows-1251?Q?1+nSlU9kZz3Yt5HrGTnDwbSUTcS2Yt7ydLmerX8ArM+H2Vj4CLwQmyvK?=
+ =?windows-1251?Q?whCV2j+5VhuwXdsgxZBEs2D9wlA7L2Sf5A1IsM+vC9ethnkopKsx5Px6?=
+ =?windows-1251?Q?xGU5ws99oUQ5tzbv3teLb7CoCf3HSpdHssUdDeuc/ctUmmPJFIO6aSL4?=
+ =?windows-1251?Q?ADAI+JweIcHuMIbDhLU0WPJHfEB/+HRU565Qetf8Tl47PaBwMohwrHuB?=
+ =?windows-1251?Q?sEaC2ci81I0fVJNDR2iqBZYNLbmsv81Pr/8+0UV9y6y+5q74jQ0lpLgd?=
+ =?windows-1251?Q?63fdiqFjGvFraFgB95REWSbk+EITIP0Q2/e0SEdrwi8JQ+X88N+wfK8z?=
+ =?windows-1251?Q?hsgb182zbrmWX5TP0IoThY68ZuPCdE4ItBTKyN9/Hkb/L2KFR9TETIDK?=
+ =?windows-1251?Q?XMgx7qOcg9gQY9xj6fCU86Sh2Rh09UcUsPcYrm1tVZf1IFutHRnrGcWP?=
+ =?windows-1251?Q?x1u3Mf4lOtBWKdZgiVXk5hBT6BEMmUip8Net/vGehb+IJoxlw646bQfR?=
+ =?windows-1251?Q?TKSTCDQJmUryRcHKjXIOcndiCG1UzbryHTTf5WOl8qqmYYDpuSDjRcdY?=
+ =?windows-1251?Q?0rYc4mK+Aqn528KngbUebCExjUBElZRdi2OmR9+xhPyNSWbVpwrQv5lQ?=
+ =?windows-1251?Q?t7crm8KrdMuizeQt2+XRsXU7hD3yuzdvu5GHIfrYIJqMkkquhSXrMQXa?=
+ =?windows-1251?Q?wCjFRsr27omUDYzC5YsPfFBDcqScy2x+B239CBrsujhoz/JvyYRMjcNY?=
+ =?windows-1251?Q?4Zt1Nhf3UXmsQhSV1juSzDQq9sZvOVQnytDDTAOk/NaDH+pn3VOmj1OD?=
+ =?windows-1251?Q?jfCtSt+JPheUt1G7zC8XXSRXBpq1Ro0KjzKHzUwYbE9/Q0EMSxyLBWFG?=
+ =?windows-1251?Q?Uh3JhB+xBiUEZaQ3RZt/GBzsZAB93WE/1QbJLNmYZk8uwTiMewbnC+RT?=
+ =?windows-1251?Q?aVDYP7dsB+sQlxxH+yETA9wLaeGj2UH2v/pOI6297Ipm3qWtbrLlIEq8?=
+ =?windows-1251?Q?Y/PTVCkYA502P0CY5Di48r/ABpjaZAjwnxYaitsx1pZxJfQ3PfGp3ic3?=
+ =?windows-1251?Q?EQ7eFkIoI1v9T+9PWNSIwyhH5N3DOlpL7RS3M+E2Ne0d+kX1gIx8uVlf?=
+ =?windows-1251?Q?cSyeqwkqJfNtuMQrCNFVqIVjMQaioQfqDiFczMWBFcnsQ/RmMkJ6Tqhk?=
+ =?windows-1251?Q?jdX3CF2VO8wAKsprKG9ruW+mjf3IvW1rYuWSSPXnUt/LzYRSQF/mYIKN?=
+ =?windows-1251?Q?qM+6mEqKIHYyMVWyFh1KMDVhjOE1hrzXKNNYK14ap4tXw7OndOsALnwh?=
+ =?windows-1251?Q?WDVW0zQ9kwOIOGKZtF2IAff7XULCZDONHyNf4eH0drhnbuWE5pxujeJ9?=
+ =?windows-1251?Q?NgmZ+vyoWQbRAyr+F+LmsbmZVm8h9vg3xxr1ycmzaVN1k76Cb0qlb8ob?=
+ =?windows-1251?Q?ke2GyYrERolFukX2po15HJG6pVyLnaR7rPTr23eOvsUqEoMVL5wxStjV?=
+ =?windows-1251?Q?iActhVZK+VPUeSWT8X6GPGPT59PQPwq2BUKvFzWqCJ17i29vLVeBXb7C?=
+ =?windows-1251?Q?pEcdMu3kb3YQgYQmEYZ6yxPaa3udCM8Fe4vrgBmMjIjWHuANXLO/4pcW?=
+ =?windows-1251?Q?tWHwySnT/2rTjStNI1TajmBeNaJai9YhemcBjYfteV4Qc2EHxw9PuHtM?=
+ =?windows-1251?Q?VUES0nhoW5GcCJDbHvoQkZJVSkHKOV8rlKHbitZ2rvGy4ySaV5gsZqLA?=
+ =?windows-1251?Q?bzSBJX1TSmMpzGbQV5xDpZJqYt4Aq+TF3PHUYy0xcoCiqnt/NmyzVxs+?=
+ =?windows-1251?Q?iZTsWhBIDKQ+KKeP2jzJkTjtNIpXP2TV3KFnQDw7a0x21dkkkz0lij72?=
+ =?windows-1251?Q?7mFcTbgC8MYb8QCITRv8FRW+iXKQTtImdU2WwIUGjDW8cBAdI91S5n08?=
+ =?windows-1251?Q?gyj5Mo00ZfYvYg0yKdwfpNvNX80E/si8MIVJOU1EytI4toXgyxnw+FEB?=
+ =?windows-1251?Q?pQOCbkjkWzjw2k3jNjr4ExP14D4qm82sh8tQhDz2Gz3YcDluOC26Z3An?=
+ =?windows-1251?Q?+QcPhpCaIBQh5YkMMN6YMHFQdUYQTU2fp7Pw0GNnCFHbFz7jDLZeHt2O?=
+ =?windows-1251?Q?CPDeoNS/1QX+2BZQ591+rLs7BUCapuKqIGCI6426cQ6JanUVtb77ElnL?=
+ =?windows-1251?Q?hCbfYzRT1Piwa4zy0AStdRUX/oX7iNB9xldT/l2037U=3D?=
+MIME-Version: 1.0
+
+<html><head>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1251"><title></title>
+</head>
+<body bgcolor="#FFFFFF" leftmargin="5" topmargin="5" rightmargin="5" bottommargin="5">
+<font size="2" color="#000000" face="Arial">
+<div>
+<b>UNITED BANK FOR AFRICA - AFRICA'S GLOBAL BANK</b></div>
+<div>
+<b>HEAD OFFICE ADDRESS UBA HOUSE</b></div>
+<div>
+<b>57 MARINA P.O. BOX 2406 LAGOS NIGERIA</b></div>
+<div>
+<b>phone no: +234 706 815 3659</b></div>
+<div>
+<b>FAX: 234 674 478 8273</b></div>
+<div>
+<b>&nbsp;</b></div>
+<div>
+<b>I Am Mr.Kennedy Uzoka the director cash processing united bank for African the international monetary fund (I.M.F.) in conjunction with Organization of African Unity (A.U) is compensating all the scam victims with $1.500.000.00USD and your email address was found in the scam victim's, the united bank for African and Federal Reserve Bank has been mandated by the (I.M.F) to pay your compensation ($1.500, 000.00USD) in cash through means of diplomatic courier service hand delivery.</b></div>
+<div>
+<b>&nbsp;</b></div>
+<div>
+<b>Take note that Three thousand united states dollars (usd$3,000) have been mapped out for all expenses in taxes and other documents that matters. Therefore, kindly forward your home address, direct phone number to the below email address mrkdyuzkub56@gmail.com</b></div>
+<div>
+<b>&nbsp;</b></div>
+<div>
+<b>Regards,</b></div>
+<div>
+<b>Mr.Kennedy Uzoka</b></div>
+<div>
+<b>Director cash processing unit</b></div>
+<div>
+<b>United bank of Africa. (U.B.A).</b></div>
+<div>
+<b>Phone no: +234 706 815 3659</b></div>
+</font>
+</body></html>

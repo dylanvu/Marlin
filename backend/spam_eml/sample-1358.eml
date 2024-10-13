@@ -1,0 +1,303 @@
+Received: from SJ2PR19MB7529.namprd19.prod.outlook.com (::1) by
+ MN0PR19MB6312.namprd19.prod.outlook.com with HTTPS; Sat, 23 Sep 2023 07:33:27
+ +0000
+Received: from BN9PR03CA0061.namprd03.prod.outlook.com (2603:10b6:408:fc::6)
+ by SJ2PR19MB7529.namprd19.prod.outlook.com (2603:10b6:a03:4c7::12) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.6813.19; Sat, 23 Sep
+ 2023 07:33:25 +0000
+Received: from BN8NAM11FT049.eop-nam11.prod.protection.outlook.com
+ (2603:10b6:408:fc:cafe::2d) by BN9PR03CA0061.outlook.office365.com
+ (2603:10b6:408:fc::6) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.6792.34 via Frontend
+ Transport; Sat, 23 Sep 2023 07:33:24 +0000
+Authentication-Results: spf=softfail (sender IP is 45.89.54.13)
+ smtp.mailfrom=audiogold.co.uk; dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=stayfriends.de;compauth=pass
+ reason=105
+Received-SPF: SoftFail (protection.outlook.com: domain of transitioning
+ audiogold.co.uk discourages use of 45.89.54.13 as permitted sender)
+Received: from 2lur.audiogold.co.uk (45.89.54.13) by
+ BN8NAM11FT049.mail.protection.outlook.com (10.13.177.157) with Microsoft SMTP
+ Server id 15.20.6838.14 via Frontend Transport; Sat, 23 Sep 2023 07:33:24
+ +0000
+X-IncomingTopHeaderMarker:
+ OriginalChecksum:6AEF4E2AA53E59359A4F040A0A4E460D32977B9CD4BCB76CDEEA5E91F3DE0EF8;UpperCasedChecksum:4C8EA57F4765647E6FD7EC7A92E22CFB3DE131BE6894DEE650E4C9FBDE3ABD40;SizeAsReceived:283;Count:8
+From: WOW TV, jehd <service@stayfriends.de>
+Subject: WOW TV Standard-Abo
+Cc: phishing@pot
+Content-Type: text/html; charset="UTF-8"
+Date: Sat, 23 Sep 2023 09:02:26 +0200
+To: phishing@pot
+X-IncomingHeaderCount: 8
+Message-ID:
+ <49791c91-0f3b-4225-98a4-5f73ee33dbb1@BN8NAM11FT049.eop-nam11.prod.protection.outlook.com>
+Return-Path: return@audiogold.co.uk
+X-MS-Exchange-Organization-ExpirationStartTime: 23 Sep 2023 07:33:24.6692
+ (UTC)
+X-MS-Exchange-Organization-ExpirationStartTimeReason: OriginalSubmit
+X-MS-Exchange-Organization-ExpirationInterval: 1:00:00:00.0000000
+X-MS-Exchange-Organization-ExpirationIntervalReason: OriginalSubmit
+X-MS-Exchange-Organization-Network-Message-Id:
+ 033d4ef4-e8b5-49b3-d7ab-08dbbc075ef0
+X-EOPAttributedMessage: 0
+X-EOPTenantAttributedMessage: 84df9e7f-e9f6-40af-b435-aaaaaaaaaaaa:0
+X-MS-Exchange-Organization-MessageDirectionality: Incoming
+X-MS-PublicTrafficType: Email
+X-MS-TrafficTypeDiagnostic:
+ BN8NAM11FT049:EE_|SJ2PR19MB7529:EE_|MN0PR19MB6312:EE_
+X-MS-Exchange-Organization-AuthSource:
+ BN8NAM11FT049.eop-nam11.prod.protection.outlook.com
+X-MS-Exchange-Organization-AuthAs: Anonymous
+X-MS-UserLastLogonTime: 9/23/2023 7:25:55 AM
+X-MS-Office365-Filtering-Correlation-Id: 033d4ef4-e8b5-49b3-d7ab-08dbbc075ef0
+X-MS-Exchange-EOPDirect: true
+X-Sender-IP: 45.89.54.13
+X-SID-PRA: SERVICE@STAYFRIENDS.DE
+X-SID-Result: NONE
+X-MS-Exchange-Organization-PCL: 2
+X-MS-Exchange-Organization-SCL: 9
+X-Microsoft-Antispam: BCL:5;
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 23 Sep 2023 07:33:24.5286
+ (UTC)
+X-MS-Exchange-CrossTenant-Network-Message-Id: 033d4ef4-e8b5-49b3-d7ab-08dbbc075ef0
+X-MS-Exchange-CrossTenant-Id: 84df9e7f-e9f6-40af-b435-aaaaaaaaaaaa
+X-MS-Exchange-CrossTenant-AuthSource:
+ BN8NAM11FT049.eop-nam11.prod.protection.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Anonymous
+X-MS-Exchange-CrossTenant-FromEntityHeader: Internet
+X-MS-Exchange-CrossTenant-RMS-PersistedConsumerOrg:
+ 00000000-0000-0000-0000-000000000000
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: SJ2PR19MB7529
+X-MS-Exchange-Transport-EndToEndLatency: 00:00:02.9646813
+X-MS-Exchange-Processed-By-BccFoldering: 15.20.6813.014
+X-Microsoft-Antispam-Mailbox-Delivery:
+	ucf:0;jmr:0;ex:0;auth:0;dest:J;OFR:SpamFilterAuthJ;ENG:(5062000305)(920221119095)(90000117)(920221120095)(90002001)(91000020)(91036095)(91040095)(9050020)(9055020)(9100341)(944500132)(2008001134)(2008121020)(4810010)(4910033)(9610028)(9525003)(10140023)(9320005)(9245025)(120001);RF:JunkEmail;
+X-Message-Info:
+	6hMotsjLow9GFc5Bau/fb1zRjma+HJiJL3+V+DvDgqgFqTN3KmoUsh5OyIGfEGn4q8DZjH6EFY15NLZ5VaNzygVXRxgQMc1XXYWzAi09HRc9XXLvxONvUN1jBwmI9I7TuD7neycFPi2jXdHQ6HObwaTwROfuBzMmIOWles41QBMhmuFLHeRX08RE1b8yaUsL+XDKVimDYApMDcvnuA4HyA==
+X-Message-Delivery: Vj0xLjE7dXM9MDtsPTA7YT0wO0Q9MjtHRD0zO1NDTD02
+X-Microsoft-Antispam-Message-Info:
+	=?utf-8?B?amEreWY0QXhxSjdMQnkxN3ovSWpGeFdlYVhQM0VmalJkL3pVVjdVZGE5TzlZ?=
+ =?utf-8?B?RnRFTVhwWEVzdTU3SGtYUy9OeHQ2ekd4d2dOQkwyVTZMUm8ycDAzeDdWZS8v?=
+ =?utf-8?B?SGZjTGRpdnNCWEw5ZVp1bDFqekRmZFNMRE5jM3VBZnI0WUdZQTd2VHBkcDRE?=
+ =?utf-8?B?WFcwVXJrRE5yK0hyc1JmdlVKSUNsQTVBNVBXY1RBdWR0MzlnWjIveGEzZ3pB?=
+ =?utf-8?B?aTUxRGxtYWF5Y0ZGQ09EdkNnWUlrZGV4UnVTZGluQmZHWUEzM3NIak41dUpX?=
+ =?utf-8?B?K01LOVRQb28vNkJIOWgwYVNGMXBheWFBc1d1MzE4Z1Zsa1IvV2gzSXY4eXZz?=
+ =?utf-8?B?VFk2UUJ4LzJMZnFZSWVWWmM1NVFWdmRwREREd3FxL1BIZzJEeWdtUkJRNGlo?=
+ =?utf-8?B?K1R5dFZDRkl6WnhGcTYxQzNrLyt1NTYxWUxHdGh3UUpReGJSdzRnVzhNV1VE?=
+ =?utf-8?B?WjBpNEpPUjBqZGx0REZEZTJmeDR1bDV5a1VMWDVyem9LeS9zUGlUdmlDWVV3?=
+ =?utf-8?B?VUxabXZDYVhObVBpV3FXcEo0WmdVcndjbzNaWk1rZVJtVnk3dHRHR0FmU1d5?=
+ =?utf-8?B?ODlxUFZsangrVVVGbll6Rno0a0tVYjZvd2VyMzJieTJOQ1o2Ym9KWDdKMFV0?=
+ =?utf-8?B?NHRDbWhmbW5OeFJZRlMvai9GWkxMOFg3bWlmdThDT1ROMDAyZG9SRzMwMllT?=
+ =?utf-8?B?bWpFZ2NlYU9QMXNUeklTbWN0d1AxNmxjSkptZnJrSzQvbXhaeVBIRHVNeEhx?=
+ =?utf-8?B?bHUrV05qYitrQXZ0cTN1R2JkdG1CaS84bVhia0dEaWFjY0loK1RGY3g0cm43?=
+ =?utf-8?B?RWlSWHlVd0ZicXJEa0ZabHpNZDhiVnpsbExkb2hjZ2tCOGpmbXV4NDR4L2x4?=
+ =?utf-8?B?by9GRVhid2RhUU5pNXRoTkJLSTM0UUhIODgxMUtvNjJ6WnplanA5eHhvSzdv?=
+ =?utf-8?B?dHRFOW5YWmNCblBDdnZla2dkL3ZvbkNPQkIrUm1IVjkwNW5zNm1FMkd2MGJE?=
+ =?utf-8?B?UFJBc3AvM3B4NkNUandMbTRhQW5UMkp5T3ZWaUswSlByUElkeEU0WDZxSUsw?=
+ =?utf-8?B?aE1GVmRnSWorMmZ5aVI3WTRueWNQSTU5dCtrNVZHSzZ4Ukl2Z0hvMmdEZnZM?=
+ =?utf-8?B?UWZaWWNLVlp0ZGVxVFV0Qjg3U0V3UWVXa2p4Tlk2VWZxajdPanFscHZZaW9B?=
+ =?utf-8?B?T1FuUmNQa1BUMWhFc1NESHRxcFl4V01kQU44SituMU0wS3owTjY2Qk1jLysv?=
+ =?utf-8?B?YjNNME9JQVZDR3FFaXpFZDdieGtaT2E2SWZFclA5Ulp2clo2dVE0Vi9Wd2cz?=
+ =?utf-8?B?UmFaeDZFU3FCZURqenBjUXh0NG9SQ1pEWDFoNHdDQUxaY014REI3NkM1UDNq?=
+ =?utf-8?B?bnU1bDgyRVFmQzNEOHc4c0VOL1VjYzRSZmR5OXBRMmk1blBCNlpYdlQvTVdM?=
+ =?utf-8?B?bWJGVkZlOVdXeTNQUjN0WXM1NDY5TkxiTHcycGtObk1sSzhrUXoxVm5tYnNI?=
+ =?utf-8?B?b2F1OWEwTWh2aEVIaHlyMFQ0dDQ0SVNwVnA3Q01keGNoeDlqTUFBUWVXcVdI?=
+ =?utf-8?B?aGN6R0FKK05qWDh3elZSbXJJUytKbFhHUGg0Ni9kcHNLQmFMSWgxL3plQnRo?=
+ =?utf-8?B?c3FNNDhyQ0RodytxanczazlsTTFVMzNVRHdwU2JnMG5CMGVOQVo5Z2VkRTFl?=
+ =?utf-8?B?bmQ3SGJxYWl2WHIxNCtzQWlwK1g1Q3hGVkpsK2c4NkJUV3J3T3hpM3pTYy9G?=
+ =?utf-8?B?ZG5QVEt5aXFGYlRKcTEwOStTbnh4ZU1YRXZuVDU2SUM0TncrOUsvaFJPbkZj?=
+ =?utf-8?B?K29iZTdZOXdkRzllTmlGVXlqdW5nWHNWenY1RTJCRzQwU0RpZCtUUEhYMGNu?=
+ =?utf-8?B?eHlqZU52aG85QVZ5Qy9Bd2lQZEo0NDRjRjE4cG5YY0V0amM4ZFJTaHdzbDFP?=
+ =?utf-8?B?MUhFejNxUnJYWFRaVExrK1hvUTh2VFhzb0ZxMThvZk52b053YjRJTXdGcmI2?=
+ =?utf-8?B?dGQ3TXF6Uy85cm1zcmhwVGVtNkNLT3JsV3hlOFZkNWNWVkRhd2V0cCtrM0dh?=
+ =?utf-8?B?KzB5Q3F4M3BTY05lcXJiWDlKV1N0N3pyWjllcG9sS0Rpd3c1N0sxa0l0cnlJ?=
+ =?utf-8?B?QzlxeUJ4cVRFVHhBOTg3dEQxQnB4Z0pCQTJqLzVqNzRSc09XV0NtcDd2Y0JV?=
+ =?utf-8?B?YmdqZDRlUkxLWkRXaW1Pd3FLS3NsVHU1d29yTEx0QXZWVkVTS2t2TTN0NXQ1?=
+ =?utf-8?B?eWlMR1dWZjlxbVQvZ2lDMzhWNmIxRXlUeSswVzFrR1ZvOTBYTHZYT01aQkxt?=
+ =?utf-8?B?VFI3RXpJZ2IyY0xPZWZtMnFWbCtQeFI5akFFNjgyVGt4VEJUaTdnU2ZUa2Ir?=
+ =?utf-8?B?eXhLMnNDVkFpTFB2cytERlhzb2hMYlNOYk9UeWJ2RG1ZSlVZbXZzNXZuVC9J?=
+ =?utf-8?B?N0svODRDMlJWMzFWdWV2Q21GUkdFazY0a0R4WTJuMlRqWWd5WFg3Wi9IUGIr?=
+ =?utf-8?B?VlNmSldDQVA3RFl6N2JseFFQKzkrT2pPajlUejFmU1RJR1hSL2M5a1lwM2xR?=
+ =?utf-8?B?UURuUElqcW5QbFVBMFpOczlrU3A5cmtKVGhVdnZKTWlFZnNJaUlPYS92NGFm?=
+ =?utf-8?B?MEFiWUxySWxqaHZKNWtDcUNrRDBnaDc2QWpFa2RpUGZxYjgycG1EUjcvcklu?=
+ =?utf-8?B?eGFEUkFlaEFWOThXdldZa3o0c0JMOGFRUVdST2g5bTQ3QXVOS1RaUnBoaWZ3?=
+ =?utf-8?B?Zk5EUXJVOHJ4UzU0Um1tc2oxdzFMY1JCbFNBSGFKd0VudHcvc05EQ21DZlZQ?=
+ =?utf-8?B?b3dlQ3hMdVpGZ1A2MmQ1V3psRms5YjJvUUFieWFkVTBqVVhGT25NdFpjd3Na?=
+ =?utf-8?B?RG4rMmoxTS9EeDRxOXJIRGUzYkJFaTRrMXRsdEIrT0pUUjdMQUVydlJ1Z3NM?=
+ =?utf-8?B?dCt1M0I0TjNFV1BkYzY2UGY2aUszM0E3WDRvT0xCdytLcVdKWTlLbEMrUGlU?=
+ =?utf-8?B?WlVnRzQyMTVOR29Ub2d0WU9nM29tNTBtWDI5QitUd2loeVdGWnRldTAvKzdN?=
+ =?utf-8?B?YnJZYkVFME1ETlZXTlBSUlZOaVdVTHBiRGdhc1JtdERVNm1BdzNJRUVwWDk5?=
+ =?utf-8?B?VXJyMkhzc2ZUSER0WnZRWFUzV1NYY1RZOHMxSmVCeG1rd2paZFhzM2t0Rldw?=
+ =?utf-8?B?b0hVelVEb3Y0ak5sMEdSRm5UVzgrUzdmZjNSMzlpczhjcFVpZ3p2Uk00SHJj?=
+ =?utf-8?B?a2RpRnZoM1pEUitvZDB5N1lLem5yVzR6R0xQM09pMFYrVWJnbzNvUDhERFFa?=
+ =?utf-8?B?TXJMMDB2cmE5blM1Z0JWN3pTYjExWUYxSERsZDE3b1hNa3hkbDU0WlE0M0pj?=
+ =?utf-8?B?TGhhajRxN2J5QWkvSXJuUko2UzhyNlpLNkxKbVJaQ2Zsc1JzRmUxVkNEdUdZ?=
+ =?utf-8?B?dlBlbHhXZzZ3Mk80aDVIelJYUFRLZWcwWi9QWVdSdjRhTEpDTnBZQ3IvTGxQ?=
+ =?utf-8?B?enEvZDdvTzUva0dXTm16SHQva3hVVjNxT2tZQklDejU3YU11MWlsaVo1NWl0?=
+ =?utf-8?B?R0FXZEY3Q2pQWnVSKzdJRHR2STd3NTc4U1hjQ2VTWkVvdVFiRXJJeFFLUXR5?=
+ =?utf-8?B?LzhWTzdEdDhIY3VUM05pZkw4QThnUWoyaFZ4MWt2WXFlVWxRR3Z5U3dIYU1a?=
+ =?utf-8?B?UnhmMGVHKzd3VVdXbTczZGtkMlZjZWd1MytKa2RXUXUvRGt6akIyZTE5elNx?=
+ =?utf-8?B?TkYrRis0K01rb2dRQlJ3RU5qSWlZL05SY1I2QXA0OHFEbnVucjhNZndoVXpY?=
+ =?utf-8?B?elpBeGZtUVRDd3VObFBIOWY4YW1GM0FHVDllK0tGUDRVY1Fha0gwUkE3Y3JI?=
+ =?utf-8?B?cEhKRnBLdStMRm03MFJLb2J2bkhid3BUU1YvWFk0ZmVNUGE1WlVCU0U3VDB1?=
+ =?utf-8?B?MVd4cjZOMDVXSVgwRFh0eVRrZElHSUFUUmQ1c29RMUNHWnVNSW5FdVZoY2FM?=
+ =?utf-8?B?c1BidlpIcVJIeWdHRG5lQ1hWbkhQUXMxcm9Ea3p5bEtGZ0gvU0JVT3A0cmZr?=
+ =?utf-8?Q?YlC4tDLEDexrH0mDPwP/1dpWIKjIcVP4E7HQ+/?=
+MIME-Version: 1.0
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="format-detection" content="telephone=no">
+<meta name="format-detection" content="date=no">
+<meta name="format-detection" content="address=no">
+<meta name="format-detection" content="email=no">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+<title></title>
+
+		<style type="text/css">
+			body	{Margin:0 auto; padding:0;}
+			img		{max-width:100%;}
+			table	{border-spacing:0!important; border:none; cellpadding:0px; }
+			td		{cellpadding:0px; border-spacing:0px;}
+			tr		{cellpadding:0px; border-spacing:0px;}
+			/* Client-specific Styles */
+			#outlook a{padding:0;} /* Force Outlook to provide a "view in browser" message */
+			.ReadMsgBody{width:100%;} .ExternalClass{width:100%;} /* Force Hotmail to display emails at full width */
+			.ExternalClass, .ExternalClass p, .ExternalClass span, .ExternalClass font, .ExternalClass td, .ExternalClass div {line-height: 100%;} /* Force Hotmail to display normal line spacing */
+			body, table, td, a{-webkit-text-size-adjust:100%; -ms-text-size-adjust:100%;} /* Prevent WebKit and Windows mobile changing default text sizes */
+			table, td{mso-table-lspace:0pt; mso-table-rspace:0pt;} /* Remove spacing between tables in Outlook 2007 and up */
+			img{-ms-interpolation-mode:bicubic;} /* Allow smoother rendering of resized image in Internet Explorer */			
+			
+			/* bungy button */ 
+			.scaling {transition: all .2s ease-in-out;}
+			.scaling:hover { transform: scale(1.1); }
+ 			@keyframes pound {
+ 			from { transform: none; }
+ 			50% { transform: scale(1.2); }
+ 			to { transform: none; }
+			}
+			.bungy {display: inline-block; font-size: 150px; color: #e00; animation: pound 3s infinite; transform-origin: center; }
+		</style>
+        
+
+        
+        
+	</head>
+	<body bgcolor="#f2f2f2">
+<!-- GK: container  -->
+<table width="100%" border="0" cellpadding="0" cellspacing="0" id="wrappertable" style="table-layout: fixed;">
+  <tr>
+    <td align="center" valign="top">
+   <table cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td width="600" align="center" valign="top" style="background-color: #ffffff; box-shadow: 11px 11px 49px 0px rgba(0, 0, 0, 0.5);">       
+                        <!-- GK: image-->			  
+                      <table width="100%" cellpadding="0" cellspacing="0" border="0" style="padding:0px 0px 10px 0px;">
+                      <tr>
+                            <td valign="middle" style=" line-height:1px;"></td>
+                          </tr>
+              <tr>
+                <td align="center" valign="top" style="padding: 0 0px;">
+               
+                <table cellpadding="0" cellspacing="0" border="0">
+                      
+                          <tr>
+                            <td width="600" align="center" valign="middle">
+                            <a href="http://easilett.com/cl/222_md/31/20/35/23/2459859" style="outline:0;" target="_blank"><img src="http://easilett.com/media/0062fcd890a9399.jpg" style="width: 100%; max-width: 100%;" border="0" alt=""></a>
+                        </td>
+                          </tr>
+                          
+                        </table>
+                 </td>
+              </tr>
+            </table>
+<!-- GK: / image-->  
+  <table width="100%" cellpadding="0" cellspacing="0" border="0" style="background-color: #ffffff;">
+                          <tr>
+                            <td align="center" valign="middle" style="font-family:Arial, Helvetica, sans-serif; font-size:26px; font-weight:bold; line-height:30px; color:#0a1b1b;  min-height:20px; mso-line-height-rule: exactly; padding:10px 10px;">WOW tv Standard-Abo
+
+                            </td>
+                          </tr>
+                        </table>                      
+              <!--GK: text-->
+                        <table width="100%" cellpadding="0" cellspacing="0" border="0">
+                          <tr>
+                            <td valign="middle" style="font-family:Arial, Helvetica, sans-serif; font-size:18px; font-weight:normal; line-height:24px; letter-spacing:0px; color:#141414; padding-left:40px; padding-right:40px; min-height:20px; mso-line-height-rule: exactly; padding: 0px 45px; ">
+         Guten Tag phishing@pot
+			<!-- START SET LINK -->
+							<br><br>
+							<strong>Dies ist Ihre Chance!</strong>
+							<br>
+							Sie wurden heute für unsere Verlsoung für <strong>1 Jahr kostenlos WOW tv</strong> auserwählt!
+							<br>
+							<br>
+							Und so können Sie sich Ihren Gewinn sichern:
+							<ul>
+								<li>Nehmen Sie an unserer Umfrage teil</li>
+								<li>Tragen Sie auf den nachfolgenden Seiten Ihre Datein ein, damit wir Ihnen den Gewinn zusenden können</li>
+								<li>Warten Sie ab bis Sie den Gewinn per Post oder E-Mail erhalten</li>
+							
+							</ul>
+
+							<!-- GK: Button-->
+                        <table width="100%" cellpadding="0" cellspacing="0" border="0">
+                          <tr>
+                            <td align="center" valign="top" style="padding: 0 20px;"><table cellpadding="0" cellspacing="0" border="0">
+                                <tr>
+                                  <td style="padding-top: 5px; line-height: 0px;"></td>
+                                </tr>
+                                <tr>
+                                  <td width="350" align="center" valign="top"><table width="100%" cellpadding="0" cellspacing="0" border="0" class="bungy">
+                                      <tr>
+                                        <td width="350" height="40" align="center" valign="middle" style="background-color: #00818a; padding: 6px 12px;"><a style="display: block; text-decoration: none; font-family: 'Arial', verdana, sans-serif; font-size: 18px; mso-line-height-rule: exactly; line-height: 32px;font-weight: bold; text-transform: uppercase; color: #ffffff;" href="http://easilett.com/cl/222_md/31/20/35/23/2459859" target="_blank">» JETZT GEWINNEN «</a></td>
+                                      </tr>
+                                    </table></td>
+                                </tr>
+                              </table></td>
+                          </tr>
+                        </table>
+                        
+                        <!-- GK: / Button-->
+
+                        <br>
+                        <br>
+                        Die Teilnahme geht schnell und ist für Sie komplett kostenlos - also, worauf warten Sie noch?! Verpassen Sie nicht Ihre Chance auf ein <strong>Gratisjahr WOW tv</strong> und nehmen Sie noch heute kostenlos teil!
+                        <br>
+                        <br>
+                        <br>
+                        Liebe Grüße
+                        <br>
+                        <br>
+                        <strong>Matthias Niemer</strong><br>
+						Programm für Kundenbingung
+</td></tr>
+                        </table>                        
+                        <!--GK: / text--> 
+                      <!--GK: / spacer-->     
+        <table width="100%" cellpadding="0" cellspacing="0" border="0">
+                    <tr>
+                      <td style="padding-top: 10px; line-height: 0px;"></td>
+                    </tr>
+                  </table>
+                   <!--GK: / spacer-->  
+                     <!--GK: / spacer-->     
+        <table width="100%" cellpadding="0" cellspacing="0" border="0">
+                    <tr>
+                      <td style="padding-top: 20px; line-height: 0px;"></td>
+                    </tr>
+                  </table>
+                   <!--GK: / spacer-->  
+            </td>
+        </tr>
+      </table></td>
+  </tr>
+</table>
+<!-- GK: container  -->
+
+
+</body>
+</html>
+<br><br><span style="color:#888;font-size:11px;font-family:verdana;display:block;text-align:center;margin-top:10px">click <a href="http://easilett.com/oop/222_md/31/20/35/23/2459859">here</a> to remove yourself from our emails list</span><br>
