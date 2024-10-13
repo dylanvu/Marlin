@@ -1,1 +1,1 @@
-# Cerebral-Beach-Hacks-2024-Backend
+# Cerebral-Beach-Hacks-2024

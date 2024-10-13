@@ -1,10 +1,7 @@
 {
   "manifest_version": 3,
-  "name": "PhisherMen",
-  "description": "Catching Phishers across the web",
-  "options_ui": {
-    "page": "src/pages/options/index.html"
-  },
+  "name": "Marlin",
+  "description": "Protecting your reef from phishers across the web",
   "background": {
     "service_worker": "src/pages/background/index.ts",
     "type": "module"
@@ -12,11 +9,11 @@
   "action": {
     "default_popup": "src/pages/popup/index.html",
     "default_icon": {
-      "32": "icon-32.png"
+      "256": "fish-256.png"
     }
   },
   "icons": {
-    "128": "icon-128.png"
+    "256": "fish-256.png"
   },
   "permissions": ["activeTab", "storage"],
   "content_scripts": [
@@ -30,8 +27,7 @@
     {
       "resources": [
         "contentStyle.css",
-        "icon-128.png",
-        "icon-32.png",
+        "fish-256.png",
         "MarlinFishFont.png"
       ],
       "matches": []

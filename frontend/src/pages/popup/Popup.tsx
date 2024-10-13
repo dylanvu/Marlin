@@ -1,7 +1,5 @@
 import { useState, useEffect } from "react";
 
-import BarContentDiv from "./components/BarContentDiv";
-
 function getColor(
   score: number,
   greenTolerance: number,
