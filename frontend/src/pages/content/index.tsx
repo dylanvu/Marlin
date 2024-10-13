@@ -40,12 +40,24 @@ try {
 
 // src/contentScript.js
 
-// Function to scrape the email data
+// Scrape email data
+
 function scrapeEmailData() {
+
+  const subjectLineElement = document.querySelector("h2.hP");
+  const subjectLine = subjectLineElement
+    ? (subjectLineElement as HTMLElement).innerText
+    : "No subject line found";
+
   const profilePictureElement = document.querySelector("img.ajn");
   const profilePicture = profilePictureElement
     ? (profilePictureElement as HTMLImageElement).src
     : "No profile picture found";
+
+  const emailAddressElement = document.querySelector(".go");
+  const emailAddress = emailAddressElement
+    ? (emailAddressElement as HTMLElement).innerText
+    : "No email address found";
 
   const emailContentElement = document.querySelector(".a3s");
   const emailContent = emailContentElement
@@ -53,7 +65,9 @@ function scrapeEmailData() {
     : "No email content found";
 
   console.log({
+    subjectLine,
     profilePicture,
+    emailAddress,
     emailContent,
   });
 
@@ -61,6 +75,7 @@ function scrapeEmailData() {
     profilePicture,
     emailContent,
   });
+
 }
 
 chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
@@ -70,18 +85,18 @@ chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
   }
 });
 
+// run scrapeEmailData() whenever URL changes
+
 let lastUrl = window.location.href;
 
-const detectUrlChange = () => {
+function detectUrlChange() {
   const currentUrl = window.location.href;
-  if (currentUrl !== lastUrl) {
-    lastUrl = currentUrl;
-    console.log("URL changed:", currentUrl);
-    setInterval(detectUrlChange, 3000);
-    scrapeEmailData();
+  if (currentUrl === lastUrl) {
+    return;
   }
-};
+  lastUrl = currentUrl;
+  console.log(`URL changed. New URL: ${currentUrl}`);
+  scrapeEmailData();
+}
 
-// https://developer.chrome.com/blog/detect-dom-changes-with-mutation-observers
-// everytime something in dom changs this triggers and queries for the email data
-setInterval(detectUrlChange, 10000);
+setInterval(detectUrlChange, 1000);
