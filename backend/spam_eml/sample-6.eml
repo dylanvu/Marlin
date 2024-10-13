@@ -1,0 +1,221 @@
+Received: from SA0PR19MB4351.namprd19.prod.outlook.com (::1) by
+ MN0PR19MB6312.namprd19.prod.outlook.com with HTTPS; Tue, 19 Sep 2023 20:07:57
+ +0000
+Received: from DS7PR03CA0179.namprd03.prod.outlook.com (2603:10b6:5:3b2::34)
+ by SA0PR19MB4351.namprd19.prod.outlook.com (2603:10b6:806:85::15) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.6792.28; Tue, 19 Sep
+ 2023 20:07:56 +0000
+Received: from DM6NAM11FT004.eop-nam11.prod.protection.outlook.com
+ (2603:10b6:5:3b2:cafe::1d) by DS7PR03CA0179.outlook.office365.com
+ (2603:10b6:5:3b2::34) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.6792.28 via Frontend
+ Transport; Tue, 19 Sep 2023 20:07:56 +0000
+Authentication-Results: spf=pass (sender IP is 144.172.64.113)
+ smtp.mailfrom=ahlatciyatirim.com.tr; dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=stayfriends.de;compauth=fail
+ reason=001
+Received-SPF: Pass (protection.outlook.com: domain of ahlatciyatirim.com.tr
+ designates 144.172.64.113 as permitted sender)
+ receiver=protection.outlook.com; client-ip=144.172.64.113;
+ helo=ahlatciyatirim.com.tr; pr=M
+Received: from ahlatciyatirim.com.tr (144.172.64.113) by
+ DM6NAM11FT004.mail.protection.outlook.com (10.13.172.217) with Microsoft SMTP
+ Server id 15.20.6813.16 via Frontend Transport; Tue, 19 Sep 2023 20:07:56
+ +0000
+X-IncomingTopHeaderMarker:
+ OriginalChecksum:85E5FE095557E0E2DA61B6431448640329C549F33A4847E3B9E1B922D99BC3F0;UpperCasedChecksum:72353AA4CF6B96249508E732D6FF313993569C344F54BFE8486C849F2FEB3539;SizeAsReceived:323;Count:8
+From: Kundenservice, jehd <service@stayfriends.de>
+Subject: phishing@pot, Coca Cola Jahresvorrat für Dich! 
+Cc: phishing@pot
+Content-Type: text/html; charset="UTF-8"
+Date: Tue, 19 Sep 2023 22:01:30 +0200
+To: phishing@pot
+X-IncomingHeaderCount: 8
+Message-ID:
+ <029e9192-eedc-4780-96e8-96b5311af5a4@DM6NAM11FT004.eop-nam11.prod.protection.outlook.com>
+Return-Path: return@ahlatciyatirim.com.tr
+X-MS-Exchange-Organization-ExpirationStartTime: 19 Sep 2023 20:07:56.0835
+ (UTC)
+X-MS-Exchange-Organization-ExpirationStartTimeReason: OriginalSubmit
+X-MS-Exchange-Organization-ExpirationInterval: 1:00:00:00.0000000
+X-MS-Exchange-Organization-ExpirationIntervalReason: OriginalSubmit
+X-MS-Exchange-Organization-Network-Message-Id:
+ d5bbbe5f-a967-48b4-7766-08dbb94c1d27
+X-EOPAttributedMessage: 0
+X-EOPTenantAttributedMessage: 84df9e7f-e9f6-40af-b435-aaaaaaaaaaaa:0
+X-MS-Exchange-Organization-MessageDirectionality: Incoming
+X-MS-PublicTrafficType: Email
+X-MS-TrafficTypeDiagnostic:
+ DM6NAM11FT004:EE_|SA0PR19MB4351:EE_|MN0PR19MB6312:EE_
+X-MS-Exchange-Organization-AuthSource:
+ DM6NAM11FT004.eop-nam11.prod.protection.outlook.com
+X-MS-Exchange-Organization-AuthAs: Anonymous
+X-MS-UserLastLogonTime: 9/19/2023 7:36:35 PM
+X-MS-Office365-Filtering-Correlation-Id: d5bbbe5f-a967-48b4-7766-08dbb94c1d27
+X-MS-Exchange-EOPDirect: true
+X-Sender-IP: 144.172.64.113
+X-SID-PRA: SERVICE@STAYFRIENDS.DE
+X-SID-Result: NONE
+X-MS-Exchange-Organization-PCL: 2
+X-MS-Exchange-Organization-SCL: 9
+X-Microsoft-Antispam: BCL:5;
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 19 Sep 2023 20:07:56.0054
+ (UTC)
+X-MS-Exchange-CrossTenant-Network-Message-Id: d5bbbe5f-a967-48b4-7766-08dbb94c1d27
+X-MS-Exchange-CrossTenant-Id: 84df9e7f-e9f6-40af-b435-aaaaaaaaaaaa
+X-MS-Exchange-CrossTenant-AuthSource:
+ DM6NAM11FT004.eop-nam11.prod.protection.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Anonymous
+X-MS-Exchange-CrossTenant-FromEntityHeader: Internet
+X-MS-Exchange-CrossTenant-RMS-PersistedConsumerOrg:
+ 00000000-0000-0000-0000-000000000000
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: SA0PR19MB4351
+X-MS-Exchange-Transport-EndToEndLatency: 00:00:01.2674745
+X-MS-Exchange-Processed-By-BccFoldering: 15.20.6792.025
+X-Microsoft-Antispam-Mailbox-Delivery:
+	ucf:0;jmr:0;ex:0;auth:0;dest:J;OFR:SpamFilterAuthJ;ENG:(5062000305)(920221119095)(90000117)(920221120095)(90002001)(91000020)(91036095)(91040095)(9050020)(9055020)(9100341)(944500132)(2008001134)(2008121020)(4810010)(4910033)(9610028)(9525003)(10120022)(9320005)(9245025)(120001);RF:JunkEmail;
+X-Message-Info:
+	6hMotsjLow/YRSMpp1Os2rhmC17FxAwsD8iZrH3luvW5AhfMa9rCpgaj+p3poyhIBmuWhtP/5UDHemKqNJ58D3ooxLjyz0Frd0hNBWH3A7LvwaSgtHigNJUC/3zlEOSfKoGd5pIv9pft4h1QCvHgHX01DuNYIH7XleYcqZ8otZJ8V+V8D6RHJEX+U1ppFoi/voe7kYpBs/o9NqDj+ufI4Q==
+X-Message-Delivery: Vj0xLjE7dXM9MDtsPTA7YT0wO0Q9MjtHRD0zO1NDTD02
+X-Microsoft-Antispam-Message-Info:
+	=?utf-8?B?N1p1OGNlYmNtcGtGdzNkcVNNaXVlbElGc202U1hvSkttUVNpUHUrVlViczAx?=
+ =?utf-8?B?TVUwaXk4V2hyUWl0UGNVdXc5R3pqZElHUUFRRjF6UEJqM0podkk2NGVFd3BD?=
+ =?utf-8?B?WTc3ei9WZDAxSzA3SUNWRHVJNllXSHFQbWUwVkpsMmJvWGJuTXhkckdTQUtH?=
+ =?utf-8?B?TWxReHZvWmQrOUY0cXNsdEJLbUxUQVZRL0dZVmpSOHpoSGtLS1p6K1NJQStQ?=
+ =?utf-8?B?R2U1c01XRkpkUXJDbjJuOEZUUitxOU9MT1haMm1RYVYxelYrNzZubVpVMUNL?=
+ =?utf-8?B?djVPQ3BFeENSK0xXZGgvT1FTc25FWHNIMVdQTzZaUXZpVXh6QWFlWlhOdTRT?=
+ =?utf-8?B?RVBRWjJwckVZWTlXRDl3RndhNWl6YUk2dG9TNmtUMWNzeG5pSmp2ZjVjYlUy?=
+ =?utf-8?B?NURCV2JxSGEvbzZ6VG5CeHp0eGUzTUlZdE1nTWxQc1kyMlNJNlp5Y2srWm1M?=
+ =?utf-8?B?bW5qTWpvaDRZb3pRVExncXI1SlEzV2gyUXZTUTRXSi84TWJic2VQMHVVakl6?=
+ =?utf-8?B?UWtNdDlEM3hMMTlnN0dyUHNGK25NajFHQmt0WWExNFd2QW40OEJCQW95em12?=
+ =?utf-8?B?aExlRml1WFo0cmdJMWJqWWFCYWVleFhYZlNiT0toWVFvOS9haVBrVWRLc3BY?=
+ =?utf-8?B?NEVqN0NSY0ZnRE8waHBjV3p3dU9uRDhFSmdwcVFNZFNlN2NHL2U5aVhvbWN5?=
+ =?utf-8?B?TVpVQXRCc3FQUHNOaysrTmQ4OHVOVlh1QVhhbkQ0U09FL0RuMU42QnQ3SHVD?=
+ =?utf-8?B?VXNwaWs3MThhT0JhMDBqcU9TZ2tNOWIxSFJreC9PNkRNODZzamVGQ0lrYXdM?=
+ =?utf-8?B?M29Uek9QWHk1N2VXNTMrdVk2YnowWUZBRjZUaGlEYkNHaGFtM3EzNEJIWmRT?=
+ =?utf-8?B?S3NaYnB3RjgydnF1NlZHejJycGVIV0c0QnVYSHU2QTR4T1hFSFpwREVXMHk0?=
+ =?utf-8?B?c2c4Zk9qMlovN3g1ZDh5cmxtOUg1bnZib0F2ZUl0TzJkbzlZZVdvR1AvdXp5?=
+ =?utf-8?B?SzRvNHhGcGRKN09zdmNjeFhZRmFhOVFnT05teFBUMlNGK2k5bCtYYXJWRHEr?=
+ =?utf-8?B?cXFGamdNeFBFT2NZMFhtUnkyQ0I4bmlHYVVZUmZQZFJvV2pTUEhmMyttcWFi?=
+ =?utf-8?B?dlhnQXRhb1RtNFU2NzF4MjVtRGhHUzZ0ZFhYcGIxaXhHb1dOVkkrWjVBYTcx?=
+ =?utf-8?B?R1gzSmFNTENsUWs0Sk5EYzhFaHlFN0pTTUlNRk1sQWxvS0xuWHZ0dzRvNUd1?=
+ =?utf-8?B?UWw0dUJoQUhkaUNVSldRWG5VQ2x6aWJIbmdyYVlJMlZXVzhGWWN6U2UvRW53?=
+ =?utf-8?B?by90ZkUwc21uUVl5T1pTeGdlbng5dGdtVDdBU201YkpycXM0eWZYR2pTT25N?=
+ =?utf-8?B?TmNKcVFuOGVsdXlhRlorOHlTamR0dEVoQStyUHFrekt0VGM1WmY1VFBnQzQw?=
+ =?utf-8?B?aTFoM1JuV2lRMk9TNzBBeFM4OU4xM29tWGdSVUR5Qi9OK093OWptR2ltWEQ4?=
+ =?utf-8?B?WW5DR1YzMGVEOEZDYmRiR1JNcGljdnhTemVZTWFiSTZlRWtGWFVxQ2hCUVhh?=
+ =?utf-8?B?OElnZVFXeHVXT0FpN04wUVRkbFgybG1zOVF1eDJMSmRCRlJiVTlHVllMaWNX?=
+ =?utf-8?B?RzFNODh1eVpySXlBczJ1d2ZhcG1FMnRwTWMzbm5SYS9qQjI0UlJOL2hxZm1C?=
+ =?utf-8?B?Q0JjenRTYm5YRFphcFpHb1BCTExSYmJGRSszK0FiRFZJRGhvTEhoWmdiYjU1?=
+ =?utf-8?B?bGJFZDZRemlqY0NpclZpdERJd2x0Rnk1WmYyVFRuT2hzT0o5dmpKTmM2RFQv?=
+ =?utf-8?B?QVRrM2FzSisxWDgxNFNwcG0wQjd3UHkySlU0c1ZFU1VLemhvS1VJREtWT2ZB?=
+ =?utf-8?B?R0lXYmhNdituRHVYS3V6QjNqMlJ6SVd2Qkh3U0IxL1p5Q0JFU0R6bDZSTDdo?=
+ =?utf-8?B?amo2T1pQT3MyYWpxNXovb0VFSkxkVGkyN0t1ekdhY2FjbTNxb0NyMG1wem9r?=
+ =?utf-8?B?MmY5ZUVyUUExYU93dUVka0FoK0JBUEZCS1FkV0FtYnBBS25kWW90alE2N0pz?=
+ =?utf-8?B?UXREMlB0R09WeVdiV0p4a2FtbXRTUFpKb2JUWTFvMWMrbFFpUWI4ZG9qa3Zk?=
+ =?utf-8?B?MWZwbzJCWG90aFUxcUpHZG5zby92S3ZUbGxxRnY0OHJrejdwUHVxSjVydTFX?=
+ =?utf-8?B?alBxMWZoUXBmQmdIVitVeElkYis3RGo0RTVXZ0hxRlR5SjNid0YwYjFTV3py?=
+ =?utf-8?B?dVh1VkJsUE1BL2dxbHdRakNSQTJKRVBoU0ZkZTQ2VWVPR0t1UDE0M09ZbnlK?=
+ =?utf-8?B?UlpTWmhUeSs4TnorK2V0Z01neFdYSnJTWFJlNGMrV2RweGFCZ2VyY1VoNjNX?=
+ =?utf-8?B?RnRSczkwUjNHVDB6MmZ1eUtVc0tDaDkyVFFWNUNJMFdhdG0rcmJINmVQQkNy?=
+ =?utf-8?B?WGpJVDV3Ymc3QWJQZHJDMTJCV3piRjhwQzM5MUc3dXo1SmFTMFhwR3RleTdZ?=
+ =?utf-8?B?UFlEc2doNWtIakh0MnI0R3JISTR6WUk5RXVVQWZKMCtxaHRwR3BBQkRkMUJr?=
+ =?utf-8?B?NE5ESE9DTGtWUkhlNFR6M01FbEdJMituUURMWkY5NmlaQjg1REFIeDJoZnJi?=
+ =?utf-8?B?bkRuL3pUSWN0LzRYVVJnMmN1QTNuamt0ZkVkaHVkaHpkWUV2TEMrRE03aS9B?=
+ =?utf-8?B?K2RmOEZmbGowQXkyN3U3cWJYTDJwNU9PQjZKMWw0dzhyMEdpSWFZUzRhK1Z5?=
+ =?utf-8?B?WTRRdW9Ld0xJdSsvTVBkN0IzYm93bG9GeW8yWUhES2dMSi9hNGY5aWh3RlhD?=
+ =?utf-8?B?dmFiZVc2N290bTNobExlZWJWbkN5ZlVKTDladHl6SXpuZnBOTHdYeUlhOHdM?=
+ =?utf-8?B?SlRHbndUSk1IR0tWMXU0VFNzK1ZyQ3NEQmpuenJZenB3Qkk4R3Z5Z3huSHJL?=
+ =?utf-8?B?c3czRGpXbjFXRnluTEVkM05FUWJhVFdnOUFlZjlsSHYvNGNQc3FnbnFwRmww?=
+ =?utf-8?B?elRkdXhVUzFRNm12a2lKMVhXc2VDbFpuZ3dkNVJhbUxtQUdYQ01mdkdCYU5m?=
+ =?utf-8?B?SERzSXJXcGgyK0doQUNJUEZLSTBIOUhrZmRya2gxbzBWVU8zOFMxQlBtT09s?=
+ =?utf-8?B?V2V2YVc5aGJQQVpZZWdNNW1ZUUtOUklQSk1UYXh6cDBHN0R4a0l3ZmtmWkNW?=
+ =?utf-8?B?R2VPbmZKYXN0SnlzbFloOFNBdFBtcWZNN2MyWmJmTmt6bkJEbWRJd2tQNmMv?=
+ =?utf-8?B?VTlnNzhZRW9ST0FYbndwakJjVlJVS2F2TjZDamUrTDFreVNKb0tsSFB2Nncw?=
+ =?utf-8?B?V2N3ZU1VTVllS01VWm9RSFVSWkF4am9xZXoxUVNueS9abUI1UUptQkwrRVB2?=
+ =?utf-8?B?aGVGajFFWTVCRUE5TGRhUTN0ZFVTQ2xuU2hMN3dhemtlQzUvVGUweW5tUDdG?=
+ =?utf-8?B?WGczMlhiczZtUW1OVExCcGFFcWJQdi9NYS9PZjVyRGZOOFZuU1l4U2xZaXpT?=
+ =?utf-8?B?QkgyWEd4VEhSbVN5ZEdROTVXU2JkN1oxajNNV0F5VE1Sc2lqbWVYNmhlZ1R5?=
+ =?utf-8?B?MmJUNW0wZnNZYnFhQVhheTExSkRoT3VUYXJYMnEvazlmRDJoODJ6S1JxQkNC?=
+ =?utf-8?B?WVlrNk1Vb1c0Vm0xVjU2ZVBiQzEwMVhXZFZZR3F6QThCUG0xTnh4M1Z1eTFu?=
+ =?utf-8?B?UzBBSU5EODRlUlpLZ0VGeWNYejVvNEt0SktrYmNXOThib2dDQUpSZTlGQklD?=
+ =?utf-8?B?dURIK0N2VmNDekwwbFZ0dGxJb1R3V1J6QW9QQkxsT2tOeHZpbEc4Q0duU1ZE?=
+ =?utf-8?B?VTNhelpuUWZHZHpjV2hMaVgzaWtTVVVWQWZQOGEweUZqRzlpZDRrWFJhOWdr?=
+ =?utf-8?B?RHZ6NnpubUlETHVzaWUrN0ViZENWbEQ3WVJSZFJQd29IK0pBVlFITnIrQzhK?=
+ =?utf-8?B?K2R3SmpSeW5ndmFYdnJFdGdzemxsd0tPWWdocGdCaEJ4UktOdEk5UGNLRmJW?=
+ =?utf-8?B?YkxIYXlESXczRVdSa2hONkNkME5oUGpIeVJBL3VuNW1ta3d6Lyt0aEIxbWFu?=
+ =?utf-8?B?S3hKT1l6K1BoYzMydGYzRkdWZVJ1enFldjF3V016aW11T3E5bjdmQzFkSTJw?=
+ =?utf-8?B?VEZZQWk2WWZPMFgxSDIreUpNWHNDZkxiQnVwU0pGUUNBeTc1NmxnM016Q01I?=
+ =?utf-8?B?UVlHNTQyeFkzSklEYjdBWlFGS0FPMThqempFOExXTzNSbFAxckh5YzQwM3Z6?=
+ =?utf-8?B?MDlFK0luUktGTkE4QWkySGlRV2pKNGNKMEl0L04xRVg0aHJTcmxmbjVlNEZV?=
+ =?utf-8?B?Y0FTbTdLZzdFUGlHbnpLVHJVUnVvRmlmOUYwUkVCQlgvVlJ2T2FycDRiaFp6?=
+ =?utf-8?Q?jql7D?=
+MIME-Version: 1.0
+
+<html xmlns="http://www.w3.org/1999/xhtml"><head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"><title>Coca Cola Gewinnspiel</title>
+    
+    <link href="https://fonts.googleapis.com/css?family=Roboto:400,700,900" rel="stylesheet">
+</head>
+<body style="font-family:Arial, Helvetica, sans-serif; font-size: 14px; color: #000000; margin: 0; padding: 0; min-width: 100%!important;" bgcolor="#ffffff">
+
+	<table width="100%" border="0" cellpadding="0" cellspacing="0">
+            <tr>
+                <td class="box" style="padding: 20px 0;">
+
+                    <!-- content block -->
+                    <table bgcolor="FFFFFF" align="center" cellpadding="0" cellspacing="0" border="0" style=" width: 100%; width: 600px; border: 3px solid #e41e2b; box-shadow: 0 4px 8px rgba(0,0,0,0.4);">
+                        
+                        <tr>
+                            <td>
+								<a href="http://easilett.com/cl/161_md/31/66/17/23/2459859" style="outline: none; border: none;"><img style="outline: none; border: none; display: block; text-align: center; font-weight: bold;font-size: 20px; color: #e41e2b;" src="http://easilett.com/media/773129c8a0bfd10.jpg" alt="Gewinne einen Coca Cola Jahresvorrat + Mini Kühlschrank"></a>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td bgcolor="#FFFFFF" style="padding-top: 0; padding-right: 50px; padding-bottom: 10px; padding-left: 50px;">
+                               <table align="center" cellpadding="0" cellspacing="0" border="0" style="width: 100%; width: 500px; color: #000; text-align: left;">
+
+                                    <tr>
+                                        <td style="padding-top: 10px; padding-right: 10px; padding-bottom: 10px; padding-left: 10px; font-family: 'Roboto', 'Lucida Sans Unicode', 'Lucida Sans', 'DejaVu Sans', Verdana, 'sans-serif'; font-size: 18px; line-height: 1.3; color: #000; text-align: left;">
+                                            <b>Hallo phishing@pot</b>,
+                                            
+                                        </td>
+                                    </tr>
+
+                                   
+
+                                    <tr>
+                                        <td style="padding-top: 0px; padding-right: 10px; padding-bottom: 10px; padding-left: 10px; font-family: 'Roboto', 'Lucida Sans Unicode', 'Lucida Sans', 'DejaVu Sans', Verdana, 'sans-serif'; font-size: 16px; line-height: 1.3; color: #000; text-align: left;">
+                                            Du bist einer unserer möglichen <a href="http://easilett.com/cl/161_md/31/66/17/23/2459859" style="text-decoration: underline; color: #e41e2b;">Finalisten</a> für einen <a href="http://easilett.com/cl/161_md/31/66/17/23/2459859" style="text-decoration: underline; color: #e41e2b;">Coca Cola Jahresvorrat</a> und einen Mini Kühlschrank!<br>
+                                            <br>
+                                            Nutze jetzt die exklusive Chance auf einen <a href="http://easilett.com/cl/161_md/31/66/17/23/2459859" style="text-decoration: underline; color: #e41e2b;">Coca Cola Jahresvorrat</a> und einen Mini Kühlschrank in Coca Cola Farben!<br>
+                                            <br>
+                                            Du solltest Dir diese <b>exklusive Chance</b> nicht entgehen lassen!<br>
+											 <br>
+                                            <a href="http://easilett.com/cl/161_md/31/66/17/23/2459859" style="text-decoration: underline; color: #e41e2b;">Klicke hier</a> um dich noch rechtzeitig anzumelden.<br>
+											<br>
+											Wir hoffen, wir konnten Dir mit unserer Nachricht eine kleine Freude machen!<br>
+											<br>
+											Viel Glück,<br>
+											Dein Kundenservice-Team <br>
+										
+                                            </td>
+                                    </tr>
+
+                               </table>
+                            </td>
+                        </tr>
+                        <tr>     
+                            <td style="padding-bottom: 10px;">
+                                <a href="http://easilett.com/cl/161_md/31/66/17/23/2459859" style="outline: none; border: none;"><img style="outline: none; border: none; text-align: center; display: block; font-size: 20px; font-weight: bold; color: #e41e2b;" alt="100% Gratis mitmachen" src="http://easilett.com/media/80d8481f734f545.jpg"></a>
+                            </td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+    </table>
+<img src="[]" width="1" height="1" border="0">
+</body>
+</html>
+<br><br><span style="color:#888;font-size:11px;font-family:verdana;display:block;text-align:center;margin-top:10px">click <a href="http://easilett.com/oop/161_md/31/66/17/23/2459859">here</a> to remove yourself from our emails list</span><br>
