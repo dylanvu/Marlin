@@ -1,5 +1,4 @@
-EML_HEADER = """
-Delivered-To: dylanvu9@gmail.com
+EML_HEADER = """Delivered-To: dylanvu9@gmail.com
 Received: by 2002:a05:6a10:f415:b0:594:2674:e74a with SMTP id g21csp1167838pxw;
 Sat, 12 Oct 2024 16:02:45 -0700 (PDT)
 X-Google-Smtp-Source: AGHT+IFggbpRgjSYeLpJpRP5BcxDlJ+QbLte3WcVowfQsq80MZ/zGpm1W40uLN3FeHolxzXNM4d9

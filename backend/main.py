@@ -1,10 +1,12 @@
+import json
+import base64
 import uvicorn
-import chardet
 import email
 from email.message import Message
 from email.parser import HeaderParser
 from fastapi import FastAPI
 from pydantic import BaseModel
+from bs4 import BeautifulSoup
 
 from model import chat
 from sanitizer import clean_eml
@@ -26,8 +28,9 @@ async def root():
 
 @app.post("/analyze/")
 async def analyze_email():
-    print("analyze_email")
-    em = email.message_from_string(EML_DATA_2)
+    eml = get_test_eml()
+    em = email.message_from_string(eml)
+
     headers = parse_headers(em)
     payload = retrieve_payload(em)
     llm_input = headers + "\n" + payload
@@ -35,23 +38,31 @@ async def analyze_email():
     with open("payload.txt", "w") as f:
         f.write(llm_input)
 
-    # header_removed = "\n".join(EML_DATA_2.split("\n\n\n")[1:])
-    # # print(header_removed)
+    # cleaned_eml = clean_eml(llm_input)
+    return chat(llm_input)
 
-    # cleaned_eml = clean_eml(payload)
-    # # print(cleaned_eml)
-    # return chat(cleaned_eml)
+
+def get_test_eml():
+    with open("test_data/ham1.txt", "r") as f:
+        return f.read()
 
 
 def parse_headers(eml_data: Message | str):
     headers = HeaderParser().parsestr(eml_data.as_string())
+    headers_to_delete = [
+        "X-",
+        "DKIM",
+        "DMARC",
+        "ARC",
+        "Delivered-To",
+        "Received",
+        "To",
+    ]
     for header in headers.keys():
-        if "X-" in header or "DKIM" in header or "DMARC" in header or "ARC" in header:
-            del headers[header]
-    print(headers.keys())
-    return headers.as_string()
-    # remove some headers
-    # return headers as string using to_string()
+        for header_to_delete in headers_to_delete:
+            if header_to_delete in header:
+                del headers[header]
+    return json.dumps(dict(headers.items()), indent=4)
 
 
 def retrieve_payload(eml_data: Message | str):
@@ -60,14 +71,15 @@ def retrieve_payload(eml_data: Message | str):
         for part in eml_data.get_payload():
             payload += "\n" + retrieve_payload(part)
     else:
-        payload = eml_data.get_payload(decode=True)
-        if not eml_data.get_content_charset():
-            charset = chardet.detect(eml_data.as_bytes())["encoding"]
-        else:
-            charset = eml_data.get_content_charset()
-        try:
-            payload = str(payload, charset)
-        except UnicodeDecodeError:
+        headers = HeaderParser().parsestr(eml_data.as_string())
+        encoding = headers.get("Content-Transfer-Encoding")
+        payload = eml_data.get_payload()
+        if encoding == "base64":
+            try:
+                payload = base64.b64decode(payload).decode()
+            except:
+                payload = ""
+        if BeautifulSoup(payload, "html.parser").find("html"):
             payload = ""
 
     return payload

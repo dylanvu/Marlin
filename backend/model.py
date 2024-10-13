@@ -8,7 +8,7 @@ from template import PARSER, get_prompt
 load_dotenv()
 
 API_URL = "https://llm.kindo.ai/v1/chat/completions"
-MODEL = "azure/gpt-4o"
+MODEL = "groq/mixtral-8x7b-32768"
 HEADERS = {
     "Content-Type": "application/json",
     "api-key": os.getenv("KINDO_API_KEY"),
