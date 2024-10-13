@@ -43,7 +43,6 @@ try {
 // Scrape email data
 
 function scrapeEmailData() {
-
   const subjectLineElement = document.querySelector("h2.hP");
   const subjectLine = subjectLineElement
     ? (subjectLineElement as HTMLElement).innerText
@@ -75,7 +74,6 @@ function scrapeEmailData() {
     profilePicture,
     emailContent,
   });
-
 }
 
 chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
@@ -100,3 +98,26 @@ function detectUrlChange() {
 }
 
 setInterval(detectUrlChange, 1000);
+const getGmailLink = () => {
+  const getSpan = document
+    .querySelector("h2.hP")
+    ?.getAttribute("data-thread-perm-id");
+  const gmidKey = document
+    .querySelector("link#embedded_data_iframe")
+    ?.getAttribute("data-recorded-src");
+  const values = gmidKey?.split(",");
+  const desiredValue = values![1]; // This should give you "61af1dbcb3"
+  const value_stripped_by_3_on_both_sides = desiredValue.slice(3, -3);
+  const gmid_key = value_stripped_by_3_on_both_sides;
+  console.log(gmid_key);
+  const other_part_of_url = getSpan?.slice(7);
+  console.log(other_part_of_url);
+
+  const gmail_link = `https://mail.google.com/mail/u/0/?ik=${gmid_key}&view=om&permmsgid=msg-${other_part_of_url}`;
+
+  // https://mail.google.com/mail/u/0/?ik=61af1dbcb3&view=om&permmsgid=msg-f:1812740411253539594
+  // https://mail.google.com/mail/u/0/?ik=61af1dbcb3&view=om&permmsgid=msg-f
+  console.log(gmail_link);
+};
+
+setInterval(getGmailLink, 6000);
