@@ -1,51 +1,90 @@
-// Create a div in the DOM
-
-/*
-
 import { createRoot } from "react-dom/client";
 
-function createDivInDOM() {
+// function createNotification() {
+
+//   // create a div, and make it the root
+//   const div = document.createElement("div");
+//   div.id = "__root";
+
+//   // attach a shadow div (sub-div) named shadowRoot to out root div
+//   const shadowRoot = div.attachShadow({ mode: "open" });
+
+//   // add our root div to the body
+//   document.body.appendChild(div);
+
+//   // create a sub-div of the shadow root div
+//   const shadowDiv = document.createElement("div");
+//   shadowRoot.appendChild(shadowDiv);
+  
+//   // apply a style sheet to the shadow root div
+//   // const style = document.createElement("style");
+//   // style.textContent = ``;
+//   // shadowRoot.appendChild(style);
+
+//   return shadowDiv;
+
+// }
+
+// function addNotification() {
+//   const rootContainer = document.querySelector('#__root');
+//   if (!rootContainer) throw new Error("Can't find Content root element");
+//   const root = createRoot(rootContainer);
+//   root.render(
+//     <div className="shadow-container">Content script loaded in Shadow DOM</div>
+//   );
+// }
+
+function notif() {
 
   const div = document.createElement("div");
   div.id = "__root";
-  const shadowRoot = div.attachShadow({ mode: "open" });
+  // const shadowRoot = div.attachShadow({ mode: "open" });
 
   document.body.appendChild(div);
 
-  const shadowDiv = document.createElement("div");
-  shadowRoot.appendChild(shadowDiv);
+  // const shadowDiv = document.createElement("div");
+  // shadowRoot.appendChild(shadowDiv);
+  
   const style = document.createElement("style");
   style.textContent = `
-    .shadow-container {
+    .container {
       position: absolute;
       bottom: 0;
       left: 0;
       font-size: 1.125rem; // text-lg
       color: black;
       background-color: #fbbf24; // amber-400
-      z-index: 50;
+      z-index: 9999;
       padding: 0.5rem;
       border-radius: 0.25rem;
     }
   `;
-  shadowRoot.appendChild(style);
 
-  const rootContainer = shadowDiv;
-  if (!rootContainer) throw new Error("Can't find Content root element");
-  const root = createRoot(rootContainer);
+  // shadowRoot.appendChild(style);
+  document.head.appendChild(style);
+
+  if (!div) throw new Error("Can't find Content root element");
+  const root = createRoot(div);
   root.render(
-    <div className="shadow-container">Content script loaded in Shadow DOM</div>
+    <div className="container">Content script loaded in Shadow DOM</div>
   );
 
 }
-*/
 
-try {
-  console.log("Content script loaded successfully.");
-  // createDivInDOM();
-} catch (e) {
-  console.error("Error in content script:", e);
+function init() {
+  try {
+    notif();
+    // createNotification();
+    // addNotification();
+    console.log("Content script loaded successfully.");
+  } catch (e) {
+    console.error(`Error in content script: ${e}`);
+  }
 }
+
+init();
+
+/* *********************************** DO NOT EDIT ANYTHING BELOW THIS *********************************** */
 
 // src/contentScript.js
 

@@ -1,8 +1,17 @@
 import { useState } from "react";
 import BarContentDiv from "./components/BarContentDiv";
 
+function getBarColor(barColor: barColor): string {
+  switch (barColor) {
+    case "green": return "bg-green-600 hover:bg-green-800";
+    case "yellow": return "bg-amber-400 hover:bg-amber-600";
+    case "red": return "bg-red-600 hover:bg-red-800";
+  }
+}
+
 export default function Popup(): JSX.Element {
 
+  const [ barIndex, setBarIndex ] = useState(0);
   const [ barContentList, setBarContentList ] = useState<BarContent[]>([
     {
       suspiciousPortion: "iwanttoscamyou@scamcentral.com",
@@ -21,7 +30,6 @@ export default function Popup(): JSX.Element {
       color: "green"
     },
   ]);
-  const [ barIndex, setBarIndex ] = useState(0);
 
   const updateBarContentList = (newBarContentList: BarContent[]) => {
     setBarContentList(newBarContentList);
@@ -34,25 +42,19 @@ export default function Popup(): JSX.Element {
       <div className="flex items-center justify-between">
         
         {/* name */}
-        <div>
+        <div className="flex gap-2 py-3 px-4 rounded-sm bg-neutral-200">
           <div className="text-3xl">Marlin</div>
-          <img src="" />
+          {/* <img src="" /> */}
         </div>
 
         {/* bars */}
-        <div className="flex gap-2">
+        <div className="flex gap-2 p-3 rounded-sm bg-neutral-200">
           {
             barContentList.map((barContent: BarContent, index: number) => {
               return (
                 <div
                   key={index}
-                  className={`w-3 h-8 rounded-sm ${
-                    barContent.color == "green"
-                      ? "bg-green-700"
-                      : barContent.color == "yellow"
-                        ? "bg-amber-500"
-                        : "bg-red-600"
-                  }`}
+                  className={`w-3 h-8 rounded-sm ${getBarColor(barContent.color)}`}
                   onClick={() => setBarIndex(index)}
                 />
               );
