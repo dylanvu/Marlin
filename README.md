@@ -36,6 +36,7 @@ Initially, we experimented with Kindo AI's low-code agents but found that while 
 ## Tech Stack
 
 Frontend: React, TypeScript, Tailwind CSS, Vite
+<br />
 Backend/AI: Python, FastAPI, Mixtral, Kindo.ai
 
 ## Challenges we ran into
