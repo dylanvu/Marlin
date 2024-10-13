@@ -4,7 +4,10 @@ module.exports = {
     extend: {
       animation: {
         'spin-slow': 'spin 20s linear infinite',
-      }
+      },
+      fontFamily: {
+        'azo-sans-uber': ['"azo-sans-uber"', 'sans-serif'],
+      },
     },
   },
   prefix: '',

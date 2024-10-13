@@ -33,17 +33,25 @@ import { createRoot } from "react-dom/client";
 //     <div className="shadow-container">Content script loaded in Shadow DOM</div>
 //   );
 // }
+
 chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
   const action = request.action;
-  if (action == "recieveInference") {
-    const buttonState = request.buttonState;
-    document
-      .getElementById("loading-button")
-      ?.style.setProperty("background-color", buttonState);
+  if (action == "receiveInference") {
+    chrome.storage.local.get(["inferenceResult"], (result) => {
+      console.log("result:", result);
+    });
+
+    // const buttonState = request.buttonState;
+    // document
+    //   .getElementById("loading-button")
+    //   ?.style.setProperty("background-color", buttonState);
   }
 });
 
 function addLoadingButton() {
+  // check if we already have the loading-button id element
+  const loadingButton = document.getElementById("loading-button");
+  if (loadingButton) return;
   const targetDiv = document.querySelector(".aeF");
   if (targetDiv) {
     const button = document.createElement("button");
@@ -63,9 +71,7 @@ function addLoadingButton() {
     targetDiv.appendChild(button);
   }
 }
-addLoadingButton();
 
-addLoadingButton();
 console.log("Loading button added");
 
 function notif() {}
@@ -117,14 +123,6 @@ function scrapeEmailData() {
   });
 }
 
-// Listen for messages from background script
-chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
-  if (request.action === "getStarted") {
-    scrapeEmailData();
-    sendResponse({ status: "Email data scraped" });
-  }
-});
-
 const inEMLPage = () => {
   // Check if the URL starts with "https://mail.google.com/mail/u/(any number)/#inbox/"
   const ok = (document.querySelector(".raw_message")! as HTMLElement).innerText;
@@ -133,6 +131,7 @@ const inEMLPage = () => {
 
 // Detect URL changes and re-run scraping
 function detectUrlChange() {
+  addLoadingButton();
   console.log("in detectUrlChange");
   const currentUrl = window.location.href;
   console.log("currentUrl:", currentUrl);

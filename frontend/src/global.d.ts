@@ -12,11 +12,15 @@ declare module '*.json' {
 
 // Custom types
 
-type barColor = "green" | "yellow" | "red";
+interface LLMResponseType {
+  is_phishing: boolean;
+  phishing_score: number;
+  brand_impersonated: string;
+  brief_reason: string;
+  observations: LLMObservationType[];
+}
 
-interface BarContent {
-  suspiciousPortion: string;
-  reason: string;
-  action: string;
-  color: barColor;
+interface LLMObservationType {
+  description: string;
+  severity: number;
 }

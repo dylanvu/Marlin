@@ -31,9 +31,13 @@ chrome.runtime.onMessage.addListener((message, _, _a) => {
     });
   } else if (message.action === "startInference") {
     const input = message.input;
-    console.log(input);
-    axios.post(api_url, { eml: "hello" }).then((response) => {
-      chrome.runtime.sendMessage({ action: "receiveInference", data: response.data });
-    });
+    axios.post(api_url, { eml: input }).then((response) => {
+      chrome.storage.local.set({ inferenceResult: response.data }, () => {
+        console.log("Inference result saved to local storage");
+        chrome.runtime.sendMessage({ action: "receiveInference", data: response.data });
+      })
+
+    })
+    return true;
   }
 });

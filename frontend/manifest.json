@@ -18,17 +18,11 @@
   "icons": {
     "128": "icon-128.png"
   },
-  "permissions": [
-    "activeTab"
-  ],
+  "permissions": ["activeTab", "storage"],
   "content_scripts": [
     {
-      "matches": [
-        "https://mail.google.com/*"
-      ],
-      "js": [
-        "src/pages/content/index.tsx"
-      ]
+      "matches": ["https://*/*"],
+      "js": ["src/pages/content/index.tsx"]
     }
   ],
   "devtools_page": "src/pages/devtools/index.html",
@@ -37,7 +31,8 @@
       "resources": [
         "contentStyle.css",
         "icon-128.png",
-        "icon-32.png"
+        "icon-32.png",
+        "MarlinFishFont.png"
       ],
       "matches": []
     }
