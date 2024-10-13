@@ -34,8 +34,13 @@ import { createRoot } from "react-dom/client";
 //   );
 // }
 chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
-  const buttonState = request.buttonState;
-  document.getElementById("loading-button")?.style.setProperty("background-color", buttonState);
+  const action = request.action;
+  if (action == "recieveInference") {
+    const buttonState = request.buttonState;
+    document
+      .getElementById("loading-button")
+      ?.style.setProperty("background-color", buttonState);
+  }
 });
 
 function addLoadingButton() {
@@ -59,7 +64,6 @@ function addLoadingButton() {
   }
 }
 addLoadingButton();
-
 
 addLoadingButton();
 console.log("Loading button added");
