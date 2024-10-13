@@ -1,0 +1,117 @@
+Message-ID: <1996831.1075845382612.JavaMail.evans@thyme>
+Date: Mon, 21 May 2001 11:31:06 -0700 (PDT)
+From: matthew.adams@enron.com
+To: adarsh.vakharia@enron.com, alejandra.chavez@enron.com, allan.ford@enron.com, 
+	andre.cangucu@enron.com, andrea.dahlke@enron.com, 
+	andreas.barschkis@enron.com, aneela.charania@enron.com, 
+	anita.luong@enron.com, anjali.abraham@enron.com, 
+	aparna.rajaram@enron.com, ariana.myers@enron.com, 
+	ashley.fay@enron.com, bharat.khanna@enron.com, bilal.bajwa@enron.com, 
+	e..kasemervisz@enron.com, binh.pham@enron.com, 
+	bjorn.hagelmann@enron.com, bradley.samuelson@enron.com, 
+	brant.reves@enron.com, brian.gillis@enron.com, 
+	brian.kristjansen@enron.com, bruce.mills@enron.com, 
+	burton.mcintyre@enron.com, carol.chew@enron.com, 
+	carole.frank@enron.com, casey.evans@enron.com, 
+	chance.rabon@enron.com, cheryl.smith@enron.com, chris.abel@enron.com, 
+	christian.lebroc@enron.com, clara.carrington@enron.com, 
+	cynthia.davis@enron.com, darin.schmidt@enron.com, c..giron@enron.com, 
+	david.baumbach@enron.com, david.port@enron.com, dave.wei@enron.com, 
+	r..brackett@enron.com, dimitri.taylor@enron.com, ding.yuan@enron.com, 
+	wayne.vinson@enron.com, edward.sacks@enron.com, 
+	eric.groves@enron.com, errol.mclaughlin@enron.com, 
+	fergus.trenholme@enron.com, frank.hayden@enron.com, 
+	frank.prejean@enron.com, gary.stadler@enron.com, 
+	andres.balmaceda@enron.com, hai.chen@enron.com, 
+	heather.dunton@enron.com, hege.kleven@enron.com, 
+	homan.amiry@enron.com, ingrid.petri@enron.com, 
+	isaac.rodriguez@enron.com, israel.estrada@enron.com, 
+	izzet.faik@enron.com, john.suttle@enron.com, jaesoo.lew@enron.com, 
+	jason.harding@enron.com, credit <.williams@enron.com>, 
+	jason.wolfe@enron.com, jay.knoblauh@enron.com, c..gossett@enron.com, 
+	jeff.royed@enron.com, a..soo@enron.com, jennifer.nguyen@enron.com, 
+	jennifer.velasco@enron.com, jenny.latham@enron.com, 
+	jeremy.mills@enron.com, jitendra.patel@enron.com, 
+	john.allison@enron.com, john.best@enron.com, 
+	john.postlethwaite@enron.com, john.swinney@enron.com, 
+	justin.den@enron.com, kam.keiser@enron.com, karin.levin@enron.com, 
+	kathy.reeves@enron.com, kenneth.thibodeaux@enron.com, 
+	keynan.dutton@enron.com, kirstee.hewitt@enron.com, 
+	kori.loibl@enron.com, kristen.clause@enron.com, 
+	kulvinder.fowler@enron.com, r..lilly@enron.com, 
+	lacrecia.davenport@enron.com, linda.li@enron.com, 
+	lloyd.fleming@enron.com, lynn.bellinghausen@enron.com, 
+	e..thomas@enron.com, mary.nordstrom@enron.com, a..brown@enron.com, 
+	michael.kass@enron.com, e.presley@enron.com, minal.dalia@enron.com, 
+	monica.reasoner@enron.com, nick.paraschos@enron.com, 
+	odile.facih@enron.com, orjan.agdesteen@enron.com, 
+	padmesh.thuraisingham@enron.com, paul.radous@enron.com, 
+	peter.bekkestad@enron.com, rabi.de@enron.com, 
+	ramiro.carrizales@enron.com, randy.otto@enron.com, 
+	rebecca.phillips@enron.com, rudi.zipter@enron.com, 
+	russell.diamond@enron.com, silio.aparicio@enron.com, 
+	sony.wilson@enron.com, stacey.white@enron.com, steve.gim@enron.com, 
+	stig.faltinsen@enron.com, sue.vasan@enron.com, sunil.dalal@enron.com, 
+	tanya.rohauer@enron.com, trond.branem@enron.com, 
+	veronica.valdez@enron.com, vladimir.gorny@enron.com, 
+	wendi.lebrocq@enron.com, xiaojun.mei@enron.com, 
+	xochitl.figueroa@enron.com, naveen.andrews@enron.com
+Subject: RisktRAC - Cleanup of Flexible Portfolios
+Mime-Version: 1.0
+Content-Type: text/plain; charset=us-ascii
+Content-Transfer-Encoding: 7bit
+X-From: Adams, Matthew </O=ENRON/OU=NA/CN=RECIPIENTS/CN=MADAMS>
+X-To: Vakharia, Adarsh </O=ENRON/OU=NA/CN=RECIPIENTS/CN=Notesaddr/cn=f9a1945d-ad09d92c-86256651-6e62a5>, Chavez, Alejandra </O=ENRON/OU=NA/CN=RECIPIENTS/CN=Achavez2>, Ford, Allan </O=ENRON/OU=NA/CN=RECIPIENTS/CN=Notesaddr/cn=9ed5de88-1af0a946-862567cc-5202e7>, Cangucu, Andre </O=ENRON/OU=NA/CN=RECIPIENTS/CN=Acanguc>, Dahlke, Andrea </O=ENRON/OU=NA/CN=RECIPIENTS/CN=Notesaddr/cn=e4171691-dcd4e60d-8625697a-4bdd5e>, Barschkis, Andreas </O=ENRON/OU=NA/CN=RECIPIENTS/CN=Notesaddr/cn=5f1f2555-3f3b507e-802569dd-61e70d>, Charania, Aneela </O=ENRON/OU=NA/CN=RECIPIENTS/CN=Notesaddr/cn=373005c7-f856b310-86256760-52029f>, Luong, Anita </O=ENRON/OU=NA/CN=RECIPIENTS/CN=Notesaddr/cn=93dc14f0-dca47d04-862564cd-6eea4d>, Abraham, Anjali </O=ENRON/OU=NA/CN=RECIPIENTS/CN=Aabraham>, Rajaram, Aparna </O=ENRON/OU=NA/CN=RECIPIENTS/CN=Arajaram>, Myers, Ariana </O=ENRON/OU=NA/CN=RECIPIENTS/CN=Notesaddr/cn=36e911d6-6757f559-8625659a-38a51a>, Fay, Ashley </O=ENRON/OU=NA/CN=RECIPIENTS/CN=Notesaddr/cn=52d12ae6-19a4ba6-8825698f-6b735a>, Khanna, Bharat </O=ENRON/OU=NA/CN=RECIPIENTS/CN=Bkhanna>, Bajwa, Bilal </O=ENRON/OU=NA/CN=RECIPIENTS/CN=Bbajwa>, Kasemervisz, William E. </O=ENRON/OU=NA/CN=RECIPIENTS/CN=Wkaseme>, Pham, Binh </O=ENRON/OU=NA/CN=RECIPIENTS/CN=Bpham2>, Hagelmann, Bjorn </O=ENRON/OU=NA/CN=RECIPIENTS/CN=Bhagelm>, Samuelson, Bradley </O=ENRON/OU=NA/CN=RECIPIENTS/CN=Bsamuel2>, Reves, Brant </O=ENRON/OU=NA/CN=RECIPIENTS/CN=Breves>, Gillis, Brian </O=ENRON/OU=NA/CN=RECIPIENTS/CN=Notesaddr/cn=4ef98e4c-f77aa779-8625692d-784e70>, Kristjansen, Brian </O=ENRON/OU=NA/CN=RECIPIENTS/CN=Notesaddr/cn=44bf7ce4-def5823f-8625679e-7f91f2>, Mills, Bruce </O=ENRON/OU=NA/CN=RECIPIENTS/CN=Bmills>, McIntyre, Burton </O=ENRON/OU=NA/CN=RECIPIENTS/CN=Bmcinty>, Chew, Carol </O=ENRON/OU=NA/CN=RECIPIENTS/CN=Notesaddr/cn=bba1dc1c-5f2ffe5b-862565fd-31a8c5>, Frank, Carole </O=ENRON/OU=NA/CN=RECIPIENTS/CN=Cfrank2>, Evans, Casey </O=ENRON/OU=NA/CN=RECIPIENTS/CN=Notesaddr/cn=261bb70a-cdf0ccf9-862568ba-4691d2>, Rabon, Chance </O=ENRON/OU=NA/CN=RECIPIENTS/CN=Crabon>, Smith, Cheryl </O=ENRON/OU=NA/CN=RECIPIENTS/CN=Notesaddr/cn=568c2efd-6feba35a-862569bb-4e85e6>, Abel, Chris </O=ENRON/OU=NA/CN=RECIPIENTS/CN=Notesaddr/cn=47c1b49-a28949d7-8625676f-7566de>, LeBroc, Christian </O=ENRON/OU=NA/CN=RECIPIENTS/CN=Clebroc>, Carrington, Clara </O=ENRON/OU=NA/CN=RECIPIENTS/CN=Ccarri1>, Davis, Cynthia </O=ENRON/OU=NA/CN=RECIPIENTS/CN=Notesaddr/cn=5bb24588-a983f3fc-862566c6-55421>, Schmidt, Darin </O=ENRON/OU=NA/CN=RECIPIENTS/CN=Dschmid6>, Giron, Darron C. </O=ENRON/OU=NA/CN=RECIPIENTS/CN=Dgiron>, Baumbach, David </O=ENRON/OU=NA/CN=RECIPIENTS/CN=Dbaumba>, Port, David </O=ENRON/OU=NA/CN=RECIPIENTS/CN=Dport>, Wei, Dave </O=ENRON/OU=NA/CN=RECIPIENTS/CN=Dwei>, Brackett, Debbie R. </O=ENRON/OU=NA/CN=RECIPIENTS/CN=Dbracke>, Taylor, Dimitri </O=ENRON/OU=NA/CN=RECIPIENTS/CN=Notesaddr/cn=e006bc38-58efefe9-8025692a-4e922a>, Yuan, Ding </O=ENRON/OU=NA/CN=RECIPIENTS/CN=Dyuan>, Vinson, Donald Wayne </O=ENRON/OU=NA/CN=RECIPIENTS/CN=Notesaddr/cn=ca79c51-d58e71f-862565d4-7994b6>, Sacks, Edward </O=ENRON/OU=NA/CN=RECIPIENTS/CN=Esacks>, Groves, Eric </O=ENRON/OU=NA/CN=RECIPIENTS/CN=Egroves>, McLaughlin Jr., Errol </O=ENRON/OU=NA/CN=RECIPIENTS/CN=Emclaug>, Trenholme, Fergus </O=ENRON/OU=NA/CN=RECIPIENTS/CN=Notesaddr/cn=523372dc-43334646-802569cf-34f1f0>, Hayden, Frank </O=ENRON/OU=NA/CN=RECIPIENTS/CN=Fhayden>, Prejean, Frank </O=ENRON/OU=NA/CN=RECIPIENTS/CN=Fprejea>, Stadler, Gary </O=ENRON/OU=NA/CN=RECIPIENTS/CN=Notesaddr/cn=7564fd38-f1b2566-8825695e-50714f>, Balmaceda, Andres </O=ENRON/OU=NA/CN=RECIPIENTS/CN=Abalmace>, Chen, Hai </O=ENRON/OU=NA/CN=RECIPIENTS/CN=Hchen2>, Dunton, Heather </O=ENRON/OU=NA/CN=RECIPIENTS/CN=Hdunton>, Kleven, Hege </O=ENRON/OU=NA/CN=RECIPIENTS/CN=EU/cn=Recipients/cn=HKleven>, Amiry, Homan </O=ENRON/OU=NA/CN=RECIPIENTS/CN=EU/cn=Recipients/cn=hamiry>, Petri, Ingrid </O=ENRON/OU=NA/CN=RECIPIENTS/CN=EU/cn=Recipients/cn=IPetri>, Rodriguez, Isaac </O=ENRON/OU=NA/CN=RECIPIENTS/CN=Notesaddr/cn=6d7edb96-d953f578-862569ab-786a6d>, Estrada, Israel </O=ENRON/OU=NA/CN=RECIPIENTS/CN=Notesaddr/cn=c916f868-f05d5e8f-86256881-4fe247>, Faik, Izzet </O=ENRON/OU=NA/CN=RECIPIENTS/CN=Notesaddr/cn=4d758a9a-cc178073-802569cf-34326f>, Suttle, John </O=ENRON/OU=NA/CN=RECIPIENTS/CN=Notesaddr/cn=cc6a2846-4aef901c-862569f2-217c6f>, Lew, Jaesoo </O=ENRON/OU=NA/CN=RECIPIENTS/CN=Jlew>, Harding, Jason </O=ENRON/OU=NA/CN=RECIPIENTS/CN=Notesaddr/cn=73ac2b81-5d010bbf-862569f5-75d596>, Williams, Jason R (Credit) </O=ENRON/OU=NA/CN=RECIPIENTS/CN=Jwilli10>, Wolfe, Jason </O=ENRON/OU=NA/CN=RECIPIENTS/CN=Jwolfe>, Knoblauh, Jay </O=ENRON/OU=NA/CN=RECIPIENTS/CN=Jknobla>, Gossett, Jeffrey C. </O=ENRON/OU=NA/CN=RECIPIENTS/CN=Jgosset>, Royed, Jeff </O=ENRON/OU=NA/CN=RECIPIENTS/CN=Jroyed>, Soo, Jeffrey A. </O=ENRON/OU=NA/CN=RECIPIENTS/CN=Jsoo>, Nguyen, Jennifer </O=ENRON/OU=NA/CN=RECIPIENTS/CN=Notesaddr/cn=b47909a3-12867a77-86256842-6f30c6>, Velasco, Jennifer </O=ENRON/OU=NA/CN=RECIPIENTS/CN=Jvelasco>, Latham, Jenny </O=ENRON/OU=NA/CN=RECIPIENTS/CN=Notesaddr/cn=fd7192f5-d452ccd9-862564b4-4aaa7d>, Mills, Jeremy </O=ENRON/OU=NA/CN=RECIPIENTS/CN=Notesaddr/cn=cb947d2f-17a7dec0-8825685c-5d6165>, Patel, Jitendra </O=ENRON/OU=NA/CN=RECIPIENTS/CN=Notesaddr/cn=847ceb9c-13906f50-80256722-42e674>, Allison, John </O=ENRON/OU=NA/CN=RECIPIENTS/CN=Jallison>, Best, John </O=ENRON/OU=NA/CN=RECIPIENTS/CN=Jbest>, Postlethwaite, John </O=ENRON/OU=NA/CN=RECIPIENTS/CN=Notesaddr/cn=87561bc0-236da0f1-86256754-7382b1>, Swinney, John </O=ENRON/OU=NA/CN=RECIPIENTS/CN=Jswinne>, Den Hertog, Justin </O=ENRON/OU=NA/CN=RECIPIENTS/CN=Notesaddr/cn=af9fe7bc-8b791d7c-86256973-51dca0>, Keiser, Kam </O=ENRON/OU=NA/CN=RECIPIENTS/CN=Kkeiser>, Levin, Karin </O=ENRON/OU=NA/CN=RECIPIENTS/CN=EU/cn=Recipients/cn=klevin>, Reeves, Kathy </O=ENRON/OU=NA/CN=RECIPIENTS/CN=Notesaddr/cn=65e1d980-d006d5b7-862564cf-249fa9>, Thibodeaux, Kenneth </O=ENRON/OU=NA/CN=RECIPIENTS/CN=Kthibode>, Dutton, Keynan </O=ENRON/OU=NA/CN=RECIPIENTS/CN=Kdutton>, Hewitt, Kirstee </O=ENRON/OU=NA/CN=RECIPIENTS/CN=Notesaddr/cn=c258aa4d-ce492eb7-802568a8-435496>, Loibl, Kori </O=ENRON/OU=NA/CN=RECIPIENTS/CN=Kloibl>, Clause, Kristen </O=ENRON/OU=NA/CN=RECIPIENTS/CN=Kclause>, Fowler, Kulvinder </O=ENRON/OU=NA/CN=RECIPIENTS/CN=Kfowler>, Lilly, Kyle R. </O=ENRON/OU=NA/CN=RECIPIENTS/CN=Klilly>, Davenport, Lacrecia </O=ENRON/OU=NA/CN=RECIPIENTS/CN=Ldavenpo>, Li, Linda </O=ENRON/OU=NA/CN=RECIPIENTS/CN=Lli4>, Fleming, Lloyd </O=ENRON/OU=NA/CN=RECIPIENTS/CN=EU/cn=Recipients/cn=lfleming>, Bellinghausen, Lynn </O=ENRON/OU=NA/CN=RECIPIENTS/CN=Lbellin>, Thomas, Mark E. </O=ENRON/OU=NA/CN=RECIPIENTS/CN=Mthomas7>, Nordstrom, Mary </O=ENRON/OU=NA/CN=RECIPIENTS/CN=Mnordst2>, Brown, Matt A. </O=ENRON/OU=NA/CN=RECIPIENTS/CN=Mbrown2>, Kass, Michael </O=ENRON/OU=NA/CN=RECIPIENTS/CN=Notesaddr/cn=7f479bc6-2038c1cb-8025696e-3ea1fc>, Presley, Mike E </O=ENRON/OU=NA/CN=RECIPIENTS/CN=Mpresley>, Dalia, Minal </O=ENRON/OU=NA/CN=RECIPIENTS/CN=Notesaddr/cn=cfc93555-9e6ce421-862568c0-4cc01d>, Reasoner, Monica </O=ENRON/OU=NA/CN=RECIPIENTS/CN=Mreason>, Paraschos, Nick </O=ENRON/OU=NA/CN=RECIPIENTS/CN=Nparasc>, Facih, Odile </O=ENRON/OU=NA/CN=RECIPIENTS/CN=Notesaddr/cn=a93e9e3a-532602c3-8025675a-2f9e26>, Agdesteen, Orjan </O=ENRON/OU=NA/CN=RECIPIENTS/CN=EU/cn=Recipients/cn=OAgdeste>, Thuraisingham, Padmesh </O=ENRON/OU=NA/CN=RECIPIENTS/CN=EU/cn=Recipients/cn=pthurais>, Radous, Paul </O=ENRON/OU=NA/CN=RECIPIENTS/CN=Pradous>, Bekkestad, Peter </O=ENRON/OU=NA/CN=RECIPIENTS/CN=EU/cn=Recipients/cn=PBekkest>, De, Rabi </O=ENRON/OU=NA/CN=RECIPIENTS/CN=Rde>, Carrizales, Ramiro </O=ENRON/OU=NA/CN=RECIPIENTS/CN=Rcarriz>, Otto, Randy </O=ENRON/OU=NA/CN=RECIPIENTS/CN=Notesaddr/cn=dc648374-a2dae74f-86256a1b-5ed8ad>, Phillips, Rebecca </O=ENRON/OU=NA/CN=RECIPIENTS/CN=Rphilli>, Zipter, Rudi </O=ENRON/OU=NA/CN=RECIPIENTS/CN=Rzipter>, Diamond, Russell </O=ENRON/OU=NA/CN=RECIPIENTS/CN=Rdiamon>, Aparicio, Silio </O=ENRON/OU=NA/CN=RECIPIENTS/CN=Notesaddr/cn=56faf463-134ad141-8025691c-3584b4>, Wilson, Sony </O=ENRON/OU=NA/CN=RECIPIENTS/CN=Sniekam>, White, Stacey </O=ENRON/OU=NA/CN=RECIPIENTS/CN=Notesaddr/cn=64b26e5d-217acff6-8625665d-76b99e>, Gim, Steve </O=ENRON/OU=NA/CN=RECIPIENTS/CN=Notesaddr/cn=86e09235-60cf1e4e-8625692f-69b1b7>, Faltinsen, Stig </O=ENRON/OU=NA/CN=RECIPIENTS/CN=Notesaddr/cn=60f0d680-4dbe834e-802569d1-459b98>, Vasan, Sue </O=ENRON/OU=NA/CN=RECIPIENTS/CN=Svasan2>, Dalal, Sunil </O=ENRON/OU=NA/CN=RECIPIENTS/CN=EU/cn=Recipients/cn=sdalal>, Rohauer, Tanya </O=ENRON/OU=NA/CN=RECIPIENTS/CN=Trohaue>, Branem Hansen, Trond </O=ENRON/OU=NA/CN=RECIPIENTS/CN=Notesaddr/cn=265a77f7-8d4c0d01-c12567a8-359364>, Valdez, Veronica </O=ENRON/OU=NA/CN=RECIPIENTS/CN=Vvaldez>, Gorny, Vladimir </O=ENRON/OU=NA/CN=RECIPIENTS/CN=Vgorny>, Lebrocq, Wendi </O=ENRON/OU=NA/CN=RECIPIENTS/CN=Wlebrocq>, Mei, Xiaojun </O=ENRON/OU=NA/CN=RECIPIENTS/CN=Xmei>, Figueroa, Xochitl </O=ENRON/OU=NA/CN=RECIPIENTS/CN=Xfiguero>, Andrews, Naveen </O=ENRON/OU=NA/CN=RECIPIENTS/CN=Nandrew>
+X-cc: 
+X-bcc: 
+X-Folder: \Wolfe, Jason\Wolfe, Jason\Inbox
+X-Origin: WOLFE-J
+X-FileName: Wolfe, Jason.pst
+
+This E-Mail is directed toward current users of the RisktRAC application.  
+
+The purpose of this E-Mail is to notify users of pending review and removal of portfolios which are no longer being used.  Please review the list below and notify me or Burton Mcintyre if you have any objection to removing these portfolios.  Please note that removal of these portfolios will not delete their underlying sub-portfolios if those sub-portfolios exist under another hierarchy.
+
+Please respond by Friday, May 25, if you feel any of these portfolios should be retained.
+
+Thanks,
+Matthew Adams
+ext. 33298
+
+
+Portfolios
+
+AGG-PWR-MGMT
+AGG-POWER-DPR
+AGG-POWER-GENCO
+BRAD MCKAY
+EES-CURVE
+EES-TEST
+EES
+GILLISB
+GILLISB-1
+GILLISB-2
+GILLISB-3
+GILLISB-4
+GILLISB-5
+GILLISB-6
+NGGENCO
+POS-POWER-TRD
+POWER
+POWER-CVAR-EAST
+POWER-INSTRMNT
+POWER-WEST-CVAR
+POWER_POS_DPR
+POWER_POSITIONS
+PWR-DPR-VAR
+PWR-ECON
+PWR-ECON-REPORT
+PWR-POS
+PWR-POS-DPR
+RAC-GAS
+RAC-GASII
+SAMANTHA-1
+STAD-MISC
+STAD-MISCII
+SPECIAL-I
+US-VAR
