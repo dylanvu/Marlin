@@ -34,6 +34,27 @@ import { createRoot } from "react-dom/client";
 //   );
 // }
 
+function addLoadingButton() {
+  const targetDiv = document.querySelector('.aeF');
+  if (targetDiv) {
+    const button = document.createElement('button');
+    button.textContent = 'Loading...';
+    button.style.cssText = `
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      padding: 5px 10px;
+      background-color: #4285f4;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    `;
+    targetDiv.appendChild(button);
+  }
+}
+addLoadingButton();
+
 function notif() {}
 
 function init() {
