@@ -53,8 +53,8 @@ function loadingButton() {
       border-radius: 4px;
       cursor: pointer;
     `;
-    targetDiv.appendChild(button);
     button.addEventListener("click", loadingButton);
+    targetDiv.appendChild(button);
   }
 }
 
