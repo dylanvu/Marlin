@@ -1,9 +1,7 @@
 console.log("background script loaded");
 
-
 let isLoading = false;
 let lastURL = "";
-
 
 chrome.runtime.onMessage.addListener((message, _, _a) => {
   console.log("message received in background script:", message);

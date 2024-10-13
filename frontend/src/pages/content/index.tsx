@@ -15,7 +15,7 @@ import { createRoot } from "react-dom/client";
 //   // create a sub-div of the shadow root div
 //   const shadowDiv = document.createElement("div");
 //   shadowRoot.appendChild(shadowDiv);
-  
+
 //   // apply a style sheet to the shadow root div
 //   // const style = document.createElement("style");
 //   // style.textContent = ``;
@@ -34,42 +34,7 @@ import { createRoot } from "react-dom/client";
 //   );
 // }
 
-function notif() {
-
-  const div = document.createElement("div");
-  div.id = "__root";
-  // const shadowRoot = div.attachShadow({ mode: "open" });
-
-  document.body.appendChild(div);
-
-  // const shadowDiv = document.createElement("div");
-  // shadowRoot.appendChild(shadowDiv);
-  
-  const style = document.createElement("style");
-  style.textContent = `
-    .container {
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      font-size: 1.125rem; // text-lg
-      color: black;
-      background-color: #fbbf24; // amber-400
-      z-index: 9999;
-      padding: 0.5rem;
-      border-radius: 0.25rem;
-    }
-  `;
-
-  // shadowRoot.appendChild(style);
-  document.head.appendChild(style);
-
-  if (!div) throw new Error("Can't find Content root element");
-  const root = createRoot(div);
-  root.render(
-    <div className="container">Content script loaded in Shadow DOM</div>
-  );
-
-}
+function notif() {}
 
 function init() {
   try {
@@ -149,9 +114,7 @@ function detectUrlChange() {
     // when we have both keys, we will construct the gmail link and open it
     const gmail_link = `https://mail.google.com/mail/u/0/?ik=${gmid_key}&view=om&permmsgid=msg-${other_part_of_url}`;
 
-    if (isLoading) {
-      chrome.runtime.sendMessage({ action: "openTab", url: gmail_link }); // Send message to background.js
-    }
+    chrome.runtime.sendMessage({ action: "openTab", url: gmail_link }); // Send message to background.js
     // check if we are in the speical original email page
   } else if (currentUrl.includes("https://mail.google.com/mail/u/0/?ik")) {
     // if we are:
@@ -196,3 +159,5 @@ const inEmailPage = () => {
 
   return [gmid_key, other_part_of_url];
 };
+
+detectUrlChange();
