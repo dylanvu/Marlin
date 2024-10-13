@@ -1,5 +1,8 @@
+import axios from "axios";
+
 console.log("background script loaded");
 
+const api_url = "http://127.0.0.1:8000/analyze/";
 let isLoading = false;
 let lastURL = "";
 
@@ -25,6 +28,11 @@ chrome.runtime.onMessage.addListener((message, _, _a) => {
       if (tabsToClose.length === 0) {
         console.log(`No tabs found with URL including: ${urlToClose}`);
       }
+    });
+  } else if (message.action === "startInference") {
+    const input = message.input;
+    axios.post(api_url, { input }).then((response) => {
+      console.log(response.data);
     });
   }
 });

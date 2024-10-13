@@ -35,16 +35,16 @@ import { createRoot } from "react-dom/client";
 // }
 
 function addLoadingButton() {
-  const targetDiv = document.querySelector('.aeF');
+  const targetDiv = document.querySelector(".nH");
   if (targetDiv) {
-    const button = document.createElement('button');
-    button.textContent = 'Loading...';
+    const button = document.createElement("button");
+    button.textContent = "Loading...";
     button.style.cssText = `
       position: absolute;
-      top: 10px;
-      right: 10px;
-      padding: 5px 10px;
-      background-color: #4285f4;
+      bottom: 100px;
+      right: 100px;
+      padding: 5px 15px;
+      background-color: black;
       color: white;
       border: none;
       border-radius: 4px;
@@ -53,7 +53,9 @@ function addLoadingButton() {
     targetDiv.appendChild(button);
   }
 }
+
 addLoadingButton();
+console.log("Loading button added");
 
 function notif() {}
 
@@ -117,23 +119,12 @@ const inEMLPage = () => {
   const ok = (document.querySelector(".raw_message")! as HTMLElement).innerText;
   return ok;
 };
-// Detect URL changes and re-run scraping
-if (window.location.href.includes("https://mail.google.com/mail/u/0/?ik=")) {
-  const text = inEMLPage();
-  console.log(text);
-  
-  setTimeout(() => {
-    chrome.runtime.sendMessage({
-      action: "closeTab",
-      url: window.location.href,
-    });
-    isLoading = true;
-  }, 2000);
-}
-let isLoading = true;
 
+// Detect URL changes and re-run scraping
 function detectUrlChange() {
+  console.log("in detectUrlChange");
   const currentUrl = window.location.href;
+  console.log("currentUrl:", currentUrl);
   // check if we are in the email page
   const gmailUrlPattern =
     /^https:\/\/mail\.google\.com\/mail\/u\/\d+\/#inbox\//;
@@ -142,20 +133,20 @@ function detectUrlChange() {
     const [gmid_key, other_part_of_url] = inEmailPage();
     if (!gmid_key || !other_part_of_url) {
       console.log("Could not scrape email data. Retrying...");
-      setTimeout(detectUrlChange, 200);
+      setTimeout(detectUrlChange, 1000);
       return;
     }
     // when we have both keys, we will construct the gmail link and open it
     const gmail_link = `https://mail.google.com/mail/u/0/?ik=${gmid_key}&view=om&permmsgid=msg-${other_part_of_url}`;
-
     chrome.runtime.sendMessage({ action: "openTab", url: gmail_link }); // Send message to background.js
     // check if we are in the speical original email page
-  } else if (currentUrl.includes("https://mail.google.com/mail/u/0/?ik")) {
+  } else if (currentUrl.startsWith("https://mail.google.com/mail/u/0/?ik")) {
     // if we are:
     // Then we will scrape it
     console.log("HELP");
     const text = inEMLPage();
     console.log(text);
+    // chrome.runtime.sendMessage({ action: "startInference", input: text });
     // then we will close it
     chrome.runtime.sendMessage({
       action: "closeTab",
@@ -166,6 +157,12 @@ function detectUrlChange() {
 
 const observer = new MutationObserver(detectUrlChange);
 observer.observe(document.body, { childList: true, subtree: false });
+console.log("Observer created");
+
+if (window.location.href.startsWith("https://mail.google.com/mail/u/0/?ik=")) {
+  detectUrlChange();
+}
+
 const inEmailPage = () => {
   const getSpan = document
     .querySelector("h2.hP")
@@ -193,5 +190,3 @@ const inEmailPage = () => {
 
   return [gmid_key, other_part_of_url];
 };
-
-detectUrlChange();
