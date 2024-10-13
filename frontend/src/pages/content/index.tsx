@@ -33,18 +33,23 @@ import { createRoot } from "react-dom/client";
 //     <div className="shadow-container">Content script loaded in Shadow DOM</div>
 //   );
 // }
+chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
+  const buttonState = request.buttonState;
+  document.getElementById("loading-button")?.style.setProperty("background-color", buttonState);
+});
 
 function addLoadingButton() {
-  const targetDiv = document.querySelector(".nH");
+  const targetDiv = document.querySelector(".aeF");
   if (targetDiv) {
     const button = document.createElement("button");
     button.textContent = "Loading...";
+    button.id = "loading-button";
     button.style.cssText = `
       position: absolute;
-      bottom: 100px;
-      right: 100px;
-      padding: 5px 15px;
-      background-color: black;
+      bottom: 10px;
+      left: 10px;
+      padding: 5px 10px;
+      background-color: #4285f4;
       color: white;
       border: none;
       border-radius: 4px;
@@ -53,6 +58,8 @@ function addLoadingButton() {
     targetDiv.appendChild(button);
   }
 }
+addLoadingButton();
+
 
 addLoadingButton();
 console.log("Loading button added");
