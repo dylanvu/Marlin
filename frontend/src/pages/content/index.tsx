@@ -118,6 +118,19 @@ const inEMLPage = () => {
   return ok;
 };
 // Detect URL changes and re-run scraping
+if (window.location.href.includes("https://mail.google.com/mail/u/0/?ik=")) {
+  const text = inEMLPage();
+  console.log(text);
+  
+  setTimeout(() => {
+    chrome.runtime.sendMessage({
+      action: "closeTab",
+      url: window.location.href,
+    });
+    isLoading = true;
+  }, 2000);
+}
+let isLoading = true;
 
 function detectUrlChange() {
   const currentUrl = window.location.href;
