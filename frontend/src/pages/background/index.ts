@@ -1,5 +1,8 @@
+import axios from "axios";
+
 console.log("background script loaded");
 
+const api_url = "http://127.0.0.1:8000/analyze/";
 let isLoading = false;
 let lastURL = "";
 
@@ -26,5 +29,15 @@ chrome.runtime.onMessage.addListener((message, _, _a) => {
         console.log(`No tabs found with URL including: ${urlToClose}`);
       }
     });
+  } else if (message.action === "startInference") {
+    const input = message.input;
+    axios.post(api_url, { eml: input }).then((response) => {
+      chrome.storage.local.set({ inferenceResult: response.data }, () => {
+        console.log("Inference result saved to local storage");
+        chrome.runtime.sendMessage({ action: "receiveInference", data: response.data });
+      })
+
+    })
+    return true;
   }
 });

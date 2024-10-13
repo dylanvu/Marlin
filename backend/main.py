@@ -1,4 +1,5 @@
 from fastapi import FastAPI, HTTPException
+from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
 
 from model import chat
@@ -7,11 +8,18 @@ from test_data.eml_data import *
 
 
 class Email(BaseModel):
-    organization: str  # the enterprise id or personal id of the user
     eml: str  # the contents of the eml file to be analyzed
+    organization: str | None = None  # the enterprise id or personal id of the user
 
 
 app = FastAPI()
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 
 
 @app.get("/")
@@ -33,9 +41,9 @@ async def analyze_email_local(path: str):
 
 
 @app.post("/analyze/")
-async def analyze_email(eml: str):
+async def analyze_email(email: Email):
     try:
-        llm_input = cleaning_pipeline(eml)
+        llm_input = cleaning_pipeline(email.eml)
         print(llm_input)
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
