@@ -37,7 +37,7 @@ def cleaning_pipeline(eml_text: str):
     return cleaned_payload
 
 
-def parse_headers(eml_data: Message | str):
+def parse_headers(eml_data: Message):
     headers = HeaderParser().parsestr(eml_data.as_string())
     del_header_prefixes = [
         "X-",
@@ -59,7 +59,7 @@ def parse_headers(eml_data: Message | str):
     return json.dumps(dict(headers.items()), indent=4)
 
 
-def retrieve_payload(eml_data: Message | str):
+def retrieve_payload(eml_data: Message):
     if eml_data.is_multipart():
         payload = ""
         for part in eml_data.get_payload():
