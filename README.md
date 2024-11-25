@@ -69,3 +69,45 @@ Just like in the healthcare industry, Marlin targets multiple levels of preventi
 - [ChatSpamDetector paper](https://arxiv.org/pdf/2402.18093)
 - [Phishing email dataset](https://github.com/rf-peixoto/phishing_pot/)
 - [Enron email dataset](https://www.cs.cmu.edu/~enron/)
+
+## Development Setup
+
+### Backend
+
+1. Change the directory to the backend folder using the following command:
+
+```bash
+cd backend
+```
+
+1. Install the required packages using the following command:
+
+```bash
+pip install -r requirements.txt
+```
+
+1. Run the FastAPI server using the following command:
+
+```bash
+fastapi dev main.py
+```
+
+### Frontend
+
+1. Change the directory to the frontend folder using the following command:
+
+```bash
+cd frontend
+```
+
+1. Install the required packages using the following command:
+
+```bash
+npm ci
+```
+
+1. Run the Vite server using the following command:
+
+```bash
+npm run dev
+```
