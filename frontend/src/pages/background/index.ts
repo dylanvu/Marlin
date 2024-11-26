@@ -63,7 +63,7 @@ function handleProcessEML(input: string) {
       };
 
       let result: LLMResponseType = null;
-      console.log("Prompting LLM with:", params);
+      console.log("Prompting LLM with params:", params);
 
       try {
         result = await runPrompt(userPrompt.content, params);
@@ -156,6 +156,7 @@ async function runPrompt(prompt: string, params: GeminiParams) {
   try {
     const parser = StructuredOutputParser.fromZodSchema(emailSchema);
     const session = await chrome.aiOriginTrial.languageModel.create(params);
+    console.log(`Prompt tokens: ${await session.countPromptTokens(prompt)}`);
     const res = await session.prompt(prompt);
     const res_json = await parser.parse(res);
     return res_json;

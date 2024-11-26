@@ -74,6 +74,8 @@ export default function Popup(): JSX.Element {
       }
     };
 
+    updateInferenceResult();
+    
     chrome.runtime.onMessage.addListener(handleOnMessage);
 
     return () => {

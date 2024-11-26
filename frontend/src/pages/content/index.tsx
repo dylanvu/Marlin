@@ -64,12 +64,17 @@ function detectDOMChange() {
 
   const gmailInboxPattern =
     /^https:\/\/mail\.google\.com\/mail\/u\/\d+\/#inbox$/;
+  const gmailSearchPattern =
+    /^https:\/\/mail\.google\.com\/mail\/u\/\d+\/#search\/[^/]+$/;
   const gmailInboxMsgPattern =
     /^https:\/\/mail\.google\.com\/mail\/u\/\d+\/#inbox\//;
   const gmailSearchMsgPattern =
-    /^https:\/\/mail\.google\.com\/mail\/u\/\d+\/#search\/.+\//;
+    /^https:\/\/mail\.google\.com\/mail\/u\/\d+\/#search\/[^/]+\/[^/]+$/;
 
-  if (gmailInboxPattern.test(currentUrl)) {
+  if (
+    gmailInboxPattern.test(currentUrl) ||
+    gmailSearchPattern.test(currentUrl)
+  ) {
     console.log("Detected Gmail Home page");
     chrome.storage.local.clear().then(
       () => {
@@ -149,7 +154,7 @@ function getRawEML() {
     setTimeout(() => {
       observer.observe(document.body, { childList: true, subtree: false });
       console.log("Observer created");
-    }, 5000);
+    }, 1000);
 
     chrome.runtime.onMessage.addListener((message) => {
       if (message.action === "receivedInference") {
