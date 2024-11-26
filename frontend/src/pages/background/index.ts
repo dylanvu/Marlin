@@ -1,10 +1,14 @@
 /* To view console log messages in this file, inspect the extension's popup */
 
 import axios from "axios";
-import { z } from "zod";
 import { StructuredOutputParser } from "@langchain/core/output_parsers";
 
-import { LLMResponseType } from "@src/global";
+import {
+  emailSchema,
+  GeminiParams,
+  LLMResponseType,
+  Prompt,
+} from "@src/global";
 
 const API_URL = "http://127.0.0.1:8000/prompt/";
 let isLoading = false;
@@ -62,7 +66,7 @@ function handleProcessEML(input: string) {
         // topK: 1,
       };
 
-      let result: LLMResponseType = null;
+      let result: LLMResponseType | null = null;
       console.log("Prompting LLM with params:", params);
 
       try {
@@ -111,57 +115,20 @@ function sendMessageToRuntime(message: object) {
   chrome.runtime.sendMessage(message);
 }
 
-// if temperature is provided, topK must also be provided
-type GeminiParams = {
-  systemPrompt: string;
-  temperature?: number;
-  topK?: number;
-};
-
-type Prompt = {
-  role: string;
-  content: string;
-};
-
-const observationSchema = z.object({
-  description: z
-    .string()
-    .describe(
-      "description of the observation, using references where possible"
-    ),
-  severity: z
-    .number()
-    .describe("severity of the observation, on a scale from 1 to 3"),
-});
-
-const emailSchema = z.object({
-  is_phishing: z
-    .boolean()
-    .describe(
-      "a boolean value indicating whether the email is phishing (true) or legitimate (false)"
-    ),
-  phishing_score: z
-    .number()
-    .describe(
-      "phishing risk confidence score as an integer on a scale from 0 to 10"
-    ),
-  brand_impersonated: z
-    .string()
-    .describe("brand name associated with the email, if applicable"),
-  observations: z.array(observationSchema),
-  brief_reason: z.string().describe("brief reason for the determination"),
-});
-
-async function runPrompt(prompt: string, params: GeminiParams) {
+async function runPrompt(
+  prompt: string,
+  params: GeminiParams
+): Promise<LLMResponseType | null> {
   try {
     const parser = StructuredOutputParser.fromZodSchema(emailSchema);
     const session = await chrome.aiOriginTrial.languageModel.create(params);
     console.log(`Prompt tokens: ${await session.countPromptTokens(prompt)}`);
     const res = await session.prompt(prompt);
     const res_json = await parser.parse(res);
-    return res_json;
+    return res_json as LLMResponseType;
   } catch (e) {
     console.error("Prompt failed", e);
+    return null;
   }
 }
 
