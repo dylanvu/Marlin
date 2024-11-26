@@ -5,16 +5,16 @@ function createLoadingButton() {
     button.textContent = "Loading...";
     button.id = "loading-button";
     button.style.cssText = `
-        position: absolute;
-        bottom: 10px;
-        left: 10px;
-        padding: 5px 10px;
-        background-color: #4285f4;
-        color: white;
-        border: none;
-        border-radius: 4px;
-        cursor: pointer;
-      `;
+      position: absolute;
+      bottom: 10px;
+      left: 10px;
+      padding: 5px 10px;
+      background-color: #4285f4;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    `;
     button.addEventListener("mouseover", updateLoadingButton);
     targetDiv.appendChild(button);
     console.log("Loading button added");
@@ -22,21 +22,22 @@ function createLoadingButton() {
 }
 
 function updateLoadingButton() {
-  const loadingButton = document.getElementById("loading-button")!;
+  const loadingButton = document.getElementById("loading-button");
+  if (!loadingButton) return;
+
   chrome.storage.local.get(["inferenceResult"], (result) => {
-    if (result.key !== "inferenceResult") {
-      return;
-    }
     const inferenceResult = result.inferenceResult;
+    if (!inferenceResult) return;
+
     const score = inferenceResult.phishing_score;
     if (score > 7) {
-      loadingButton.style.setProperty("background-color", "red");
+      loadingButton.style.backgroundColor = "red";
       loadingButton.textContent = "Dangerous";
     } else if (score > 3) {
-      loadingButton.style.setProperty("background-color", "yellow");
+      loadingButton.style.backgroundColor = "yellow";
       loadingButton.textContent = "Risky";
     } else {
-      loadingButton.style.setProperty("background-color", "green");
+      loadingButton.style.backgroundColor = "green";
       loadingButton.textContent = "Safe";
     }
   });
@@ -45,16 +46,15 @@ function updateLoadingButton() {
 function resetLoadingButton() {
   const loadingButton = document.getElementById("loading-button");
   if (loadingButton) {
-    loadingButton.style.setProperty("background-color", "#4285f4");
+    loadingButton.style.backgroundColor = "#4285f4";
     loadingButton.textContent = "Loading...";
   }
 }
 
-// Detect URL changes and re-run scraping
 function detectUrlChange() {
   const currentUrl = window.location.href;
   createLoadingButton();
-  // check if we are in the email page
+
   const gmailInboxPattern =
     /^https:\/\/mail\.google\.com\/mail\/u\/\d+\/#inbox$/;
   const gmailMsgPattern =
@@ -62,29 +62,24 @@ function detectUrlChange() {
 
   if (gmailInboxPattern.test(currentUrl)) {
     console.log("Detected Gmail Home page");
-    chrome.storage.local.clear().then(() => {
-      resetLoadingButton();
-    });
+    chrome.storage.local.clear().then(resetLoadingButton);
   } else if (gmailMsgPattern.test(currentUrl)) {
     console.log("Detected email page");
-    // repeatedly attempt to scrape the necessary email id keys and inbox keys
     const [gmidKey, permMsgId] = inEmailPage();
     if (!gmidKey || !permMsgId) {
       console.log("Could not scrape email data. Retrying...");
       setTimeout(detectUrlChange, 5000);
       return;
     }
-    // when we have both keys, we will construct the gmail link and open it
-    const gmail_link = `https://mail.google.com/mail/u/0/?ik=${gmidKey}&view=om&permmsgid=msg-${permMsgId}`;
-    chrome.runtime.sendMessage({ action: "openTab", url: gmail_link }); // Send message to background.js
+    const gmailLink = `https://mail.google.com/mail/u/0/?ik=${gmidKey}&view=om&permmsgid=msg-${permMsgId}`;
+    chrome.runtime.sendMessage({ action: "openTab", url: gmailLink });
   }
 }
 
-const inEmailPage = () => {
+function inEmailPage() {
   const getSpan = document
     .querySelector("h2.hP")
     ?.getAttribute("data-thread-perm-id");
-
   let gmidKey = document
     .querySelector("link#embedded_data_iframe")
     ?.getAttribute("data-recorded-src");
@@ -95,9 +90,7 @@ const inEmailPage = () => {
   }
 
   const values = gmidKey.split(",");
-  const desiredValue = values[1]; // This should give you "61af1dbcb3"
-  const value_stripped_by_3_on_both_sides = desiredValue.slice(3, -3);
-  gmidKey = value_stripped_by_3_on_both_sides;
+  gmidKey = values[1]?.slice(3, -3);
   console.log("Gmid_key:", gmidKey);
 
   if (!getSpan) {
@@ -109,21 +102,33 @@ const inEmailPage = () => {
   console.log("permmsgid:", permMsgId);
 
   return [gmidKey, permMsgId];
+}
+
+function getRawEML() {
+  return (
+    (document.querySelector(".raw_message") as HTMLElement)?.innerText || ""
+  );
+}
+
+type GeminiParams = {
+  systemPrompt: string;
+  temperature: number;
 };
 
-const getRawEML = () => {
-  const ok = (document.querySelector(".raw_message")! as HTMLElement).innerText;
-  return ok;
-};
+async function runPrompt(prompt: string, params: GeminiParams) {
+  try {
+    const session = await chrome.aiOriginTrial.languageModel.create(params);
+    return session.prompt(prompt);
+  } catch (e) {
+    console.error("Prompt failed", e);
+  }
+}
 
-// immediately invoked function expression (IIFE): https://developer.mozilla.org/en-US/docs/Glossary/IIFE
 (function init() {
   const gmailEmlPattern =
     /^https:\/\/mail\.google\.com\/mail\/u\/\d+\/\?ik=.*$/;
 
   if (gmailEmlPattern.test(window.location.href)) {
-    console.log("in EML page");
-    // scrape the EML data
     const text = getRawEML();
     chrome.runtime.sendMessage({
       action: "closeTab",
@@ -138,12 +143,9 @@ const getRawEML = () => {
     observer.observe(document.body, { childList: true, subtree: false });
     console.log("Observer created");
 
-    chrome.runtime.onMessage.addListener((request, _sender, _sendResponse) => {
-      const action = request.action;
-      if (action == "receivedPrompt") {
-        console.log("Received prompt");
-        // TODO: send prompt to LLM
-        updateLoadingButton();
+    chrome.runtime.onMessage.addListener((request) => {
+      if (request.action === "receivedPrompt") {
+        console.log("Received prompt:", request.prompt);
       }
     });
     console.log("Content script loaded successfully.");

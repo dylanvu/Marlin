@@ -15,7 +15,7 @@
   "icons": {
     "256": "fish-256.png"
   },
-  "permissions": ["activeTab", "storage"],
+  "permissions": ["activeTab", "storage", "tabs"],
   "content_scripts": [
     {
       "matches": ["https://*/*"],

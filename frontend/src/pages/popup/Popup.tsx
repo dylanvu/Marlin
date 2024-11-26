@@ -42,9 +42,10 @@ export default function Popup(): JSX.Element {
 
   useEffect(() => {
     chrome.storage.local.get(["inferenceResult"], (result) => {
-      if (result.key == "inferenceResult") {
-        console.log("inferenceResult:", result.inferenceResult);
-        setLLMResponse(result.inferenceResult);
+      const inferenceResult = result.inferenceResult;
+      if (inferenceResult) {
+        console.log("inferenceResult:", inferenceResult);
+        setLLMResponse(inferenceResult);
       }
     });
   }, []);
