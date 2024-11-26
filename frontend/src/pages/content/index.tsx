@@ -1,4 +1,6 @@
 function createLoadingButton() {
+  if (document.getElementById("loading-button")) return;
+
   const targetDiv = document.querySelector(".aeF");
   if (targetDiv) {
     const button = document.createElement("button");
@@ -25,9 +27,14 @@ function updateLoadingButton() {
   const loadingButton = document.getElementById("loading-button");
   if (!loadingButton) return;
 
-  chrome.storage.local.get(["inferenceResult"], (result) => {
-    const inferenceResult = result.inferenceResult;
+  chrome.storage.local.get(["inferenceResult"], (items) => {
+    const inferenceResult = items.inferenceResult;
     if (!inferenceResult) return;
+
+    console.log(
+      "Content script loaded inference result from local storage:",
+      inferenceResult
+    );
 
     const score = inferenceResult.phishing_score;
     if (score > 7) {
@@ -51,24 +58,36 @@ function resetLoadingButton() {
   }
 }
 
-function detectUrlChange() {
+function detectDOMChange() {
   const currentUrl = window.location.href;
   createLoadingButton();
 
   const gmailInboxPattern =
     /^https:\/\/mail\.google\.com\/mail\/u\/\d+\/#inbox$/;
-  const gmailMsgPattern =
+  const gmailInboxMsgPattern =
     /^https:\/\/mail\.google\.com\/mail\/u\/\d+\/#inbox\//;
+  const gmailSearchMsgPattern =
+    /^https:\/\/mail\.google\.com\/mail\/u\/\d+\/#search\/.+\//;
 
   if (gmailInboxPattern.test(currentUrl)) {
     console.log("Detected Gmail Home page");
-    chrome.storage.local.clear().then(resetLoadingButton);
-  } else if (gmailMsgPattern.test(currentUrl)) {
+    chrome.storage.local.clear().then(
+      () => {
+        console.log("Local storage cleared");
+        resetLoadingButton();
+      },
+      (error) => {
+        console.error("Error clearing local storage:", error);
+      }
+    );
+  } else if (
+    gmailInboxMsgPattern.test(currentUrl) ||
+    gmailSearchMsgPattern.test(currentUrl)
+  ) {
     console.log("Detected email page");
     const [gmidKey, permMsgId] = inEmailPage();
     if (!gmidKey || !permMsgId) {
-      console.log("Could not scrape email data. Retrying...");
-      setTimeout(detectUrlChange, 5000);
+      console.log("Could not scrape email data.");
       return;
     }
     const gmailLink = `https://mail.google.com/mail/u/0/?ik=${gmidKey}&view=om&permmsgid=msg-${permMsgId}`;
@@ -110,20 +129,6 @@ function getRawEML() {
   );
 }
 
-type GeminiParams = {
-  systemPrompt: string;
-  temperature: number;
-};
-
-async function runPrompt(prompt: string, params: GeminiParams) {
-  try {
-    const session = await chrome.aiOriginTrial.languageModel.create(params);
-    return session.prompt(prompt);
-  } catch (e) {
-    console.error("Prompt failed", e);
-  }
-}
-
 (function init() {
   const gmailEmlPattern =
     /^https:\/\/mail\.google\.com\/mail\/u\/\d+\/\?ik=.*$/;
@@ -139,13 +144,17 @@ async function runPrompt(prompt: string, params: GeminiParams) {
   }
 
   try {
-    const observer = new MutationObserver(detectUrlChange);
-    observer.observe(document.body, { childList: true, subtree: false });
-    console.log("Observer created");
+    const observer = new MutationObserver(detectDOMChange);
+    // wait for DOM to load before observing
+    setTimeout(() => {
+      observer.observe(document.body, { childList: true, subtree: false });
+      console.log("Observer created");
+    }, 5000);
 
-    chrome.runtime.onMessage.addListener((request) => {
-      if (request.action === "receivedPrompt") {
-        console.log("Received prompt:", request.prompt);
+    chrome.runtime.onMessage.addListener((message) => {
+      if (message.action === "receivedInference") {
+        console.log("Content script received inference result");
+        updateLoadingButton();
       }
     });
     console.log("Content script loaded successfully.");
