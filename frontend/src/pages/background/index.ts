@@ -1,13 +1,12 @@
 /* To view console log messages in this file, inspect the extension's popup */
 
 import axios from "axios";
-import { StructuredOutputParser } from "@langchain/core/output_parsers";
 
 import {
-  emailSchema,
   GeminiParams,
   LLMResponseType,
-  Prompt,
+  emailSchemaParser,
+  systemPrompt,
 } from "@src/global";
 
 const API_URL = "http://127.0.0.1:8000/prompt/";
@@ -52,25 +51,24 @@ function handleCloseTab(urlToClose: string) {
   });
 }
 
-function handleProcessEML(input: string) {
+function handleProcessEML(eml: string) {
   axios
-    .post(API_URL, { eml: input })
+    .post(API_URL, { eml })
     .then(async (response) => {
-      const prompt: Prompt[] = response.data;
-      console.log("Prompt:", prompt);
+      const cleaned_eml: string = response.data;
+      console.log("cleaned eml:", cleaned_eml);
 
-      const [systemPrompt, userPrompt] = prompt;
       const params: GeminiParams = {
-        systemPrompt: systemPrompt.content,
+        systemPrompt: systemPrompt,
         // temperature: 0,
         // topK: 1,
       };
-
-      let result: LLMResponseType | null = null;
       console.log("Prompting LLM with params:", params);
 
+      let userPrompt = `Email: ${cleaned_eml}\nAnswer: `;
+      let result: LLMResponseType | null = null;
       try {
-        result = await runPrompt(userPrompt.content, params);
+        result = await runPrompt(userPrompt, params);
       } catch (e) {
         console.error("Error in processing LLM locally:", e);
       }
@@ -78,10 +76,24 @@ function handleProcessEML(input: string) {
       if (!result) {
         result = {
           is_phishing: false,
-          phishing_score: 0,
-          brand_impersonated: "",
-          brief_reason: "",
-          observations: [],
+          phishing_score: 1,
+          brand_impersonated: "Google",
+          brief_reason:
+            "This is a sample analysis result that appears when the LLM prompt fails.",
+          observations: [
+            {
+              description: "Testing low severity observation.",
+              severity: 1,
+            },
+            {
+              description: "Testing medium severity observation.",
+              severity: 2,
+            },
+            {
+              description: "Testing high severity observation.",
+              severity: 3,
+            },
+          ],
         };
       }
 
@@ -120,14 +132,15 @@ async function runPrompt(
   params: GeminiParams
 ): Promise<LLMResponseType | null> {
   try {
-    const parser = StructuredOutputParser.fromZodSchema(emailSchema);
     const session = await chrome.aiOriginTrial.languageModel.create(params);
-    console.log(`Prompt tokens: ${await session.countPromptTokens(prompt)}`);
+    const tokenCount = await session.countTokens(prompt);
+    console.log(`Prompt tokens: ${tokenCount}`);
+
     const res = await session.prompt(prompt);
-    const res_json = await parser.parse(res);
+    const res_json = await emailSchemaParser.parse(res);
     return res_json as LLMResponseType;
   } catch (e) {
-    console.error("Prompt failed", e);
+    console.error("Prompt failed:", e);
     return null;
   }
 }
