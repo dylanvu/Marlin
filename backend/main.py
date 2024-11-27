@@ -1,15 +1,9 @@
 from fastapi import FastAPI, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
-from pydantic import BaseModel
 
-from model import chat, get_prompt
-from sanitizer import cleaning_pipeline
+from model import chat
+from sanitizer import Email, run_cleaning_pipeline
 from test_data.eml_data import *
-
-
-class Email(BaseModel):
-    eml: str  # the contents of the eml file to be analyzed
-    organization: str | None = None  # the enterprise id or personal id of the user
 
 
 app = FastAPI()
@@ -29,8 +23,7 @@ async def root():
 
 @app.post("/prompt/")
 async def clean_email(email: Email):
-    llm_input = cleaning_pipeline(email.eml)
-    return get_prompt(llm_input)
+    return run_cleaning_pipeline(email.eml)
 
 
 @app.post("/analyze-local/")
@@ -41,7 +34,7 @@ async def analyze_email_local(path: str):
     except FileNotFoundError:
         raise HTTPException(status_code=404, detail="File not found")
 
-    llm_input = cleaning_pipeline(eml)
+    llm_input = run_cleaning_pipeline(eml)
     print(llm_input)
     return chat(llm_input)
 
@@ -49,7 +42,7 @@ async def analyze_email_local(path: str):
 @app.post("/analyze/")
 async def analyze_email(email: Email):
     try:
-        llm_input = cleaning_pipeline(email.eml)
+        llm_input = run_cleaning_pipeline(email.eml)
         print(llm_input)
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
