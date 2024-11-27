@@ -46,20 +46,20 @@ const observationSchema = z.object({
 });
 
 const emailSchema = z.object({
-  is_phishing: z
-    .boolean()
-    .describe(
-      "a boolean value indicating whether the email is phishing (true) or legitimate (false)"
-    ),
+  brand_impersonated: z
+    .string()
+    .describe("brand name associated with the email, if applicable"),
+  observations: z.array(observationSchema),
   phishing_score: z
     .number()
     .describe(
       "phishing risk confidence score as an integer on a scale from 0 to 10"
     ),
-  brand_impersonated: z
-    .string()
-    .describe("brand name associated with the email, if applicable"),
-  observations: z.array(observationSchema),
+  is_phishing: z
+    .boolean()
+    .describe(
+      "boolean value indicating whether the email is phishing (true) or legitimate (false)"
+    ),
   brief_reason: z.string().describe("brief reason for the determination"),
 });
 

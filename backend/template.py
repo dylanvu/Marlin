@@ -10,16 +10,16 @@ class Observation(BaseModel):
 
 
 class Email(BaseModel):
-    is_phishing: bool = Field(
-        description="a boolean value indicating whether the email is phishing (true) or legitimate (false)"
-    )
-    phishing_score: int = Field(
-        "phishing risk confidence score as an integer on a scale from 0 to 10"
-    )
     brand_impersonated: str = Field(
         "brand name associated with the email, if applicable"
     )
     observations: list[Observation] = Field(...)
+    phishing_score: int = Field(
+        "phishing risk confidence score as an integer on a scale from 0 to 10"
+    )
+    is_phishing: bool = Field(
+        description="boolean value indicating whether the email is phishing (true) or legitimate (false)"
+    )
     brief_reason: str = Field("brief reason for the determination")
 
 
