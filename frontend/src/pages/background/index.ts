@@ -56,8 +56,8 @@ function handleProcessEML(eml: string) {
 
       const params: GeminiParams = {
         systemPrompt: systemPrompt,
-        // temperature: 0,
-        // topK: 1,
+        temperature: 0,
+        topK: 1,
       };
       console.log("Prompting LLM with params:", params);
 

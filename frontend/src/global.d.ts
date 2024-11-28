@@ -49,11 +49,13 @@ const emailSchema = z.object({
   brand_impersonated: z
     .string()
     .describe("brand name associated with the email, if applicable"),
-  observations: z.array(observationSchema),
+  observations: z
+    .array(observationSchema)
+    .describe("list of observations (max 3)"),
   phishing_score: z
     .number()
     .describe(
-      "phishing risk confidence score as an integer on a scale from 0 to 10"
+      "phishing risk confidence score on a scale from 0 to 10, with >=4 being risky and >=8 being dangerous"
     ),
   is_phishing: z
     .boolean()

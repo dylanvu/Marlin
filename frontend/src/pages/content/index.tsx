@@ -4,7 +4,7 @@ function createLoadingButton() {
   const targetDiv = document.querySelector(".aeF");
   if (targetDiv) {
     const button = document.createElement("button");
-    button.textContent = "Loading...";
+    button.textContent = "Ready";
     button.id = "loading-button";
     button.style.cssText = `
       position: absolute;
@@ -17,7 +17,6 @@ function createLoadingButton() {
       border-radius: 4px;
       cursor: pointer;
     `;
-    button.addEventListener("mouseover", updateLoadingButton);
     targetDiv.appendChild(button);
     console.log("Loading button added");
   }
@@ -54,7 +53,7 @@ function resetLoadingButton() {
   const loadingButton = document.getElementById("loading-button");
   if (loadingButton) {
     loadingButton.style.backgroundColor = "#4285f4";
-    loadingButton.textContent = "Loading...";
+    loadingButton.textContent = "Ready";
   }
 }
 
@@ -97,6 +96,10 @@ function detectDOMChange() {
     }
     const gmailLink = `https://mail.google.com/mail/u/0/?ik=${gmidKey}&view=om&permmsgid=msg-${permMsgId}`;
     chrome.runtime.sendMessage({ action: "openTab", url: gmailLink });
+    const loadingButton = document.getElementById("loading-button");
+    if (loadingButton) {
+      loadingButton.textContent = "Loading...";
+    }
   }
 }
 
