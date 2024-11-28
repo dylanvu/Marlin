@@ -2,12 +2,8 @@
 
 import axios from "axios";
 
-import {
-  GeminiParams,
-  LLMResponseType,
-  emailSchemaParser,
-  systemPrompt,
-} from "@src/global";
+import type { GeminiParams, LLMResponseType } from "@src/global.d.ts";
+import { systemPrompt, emailSchemaParser } from "@src/global.d.js";
 
 const API_URL = "http://127.0.0.1:8000/prompt/";
 let isLoading = false;

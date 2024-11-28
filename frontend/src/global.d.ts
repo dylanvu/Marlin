@@ -65,6 +65,7 @@ const emailSchema = z.object({
 
 type LLMResponseType = z.infer<typeof emailSchema>;
 
-const emailSchemaParser = StructuredOutputParser.fromZodSchema(emailSchema);
+export const emailSchemaParser =
+  StructuredOutputParser.fromZodSchema(emailSchema);
 
-const systemPrompt = `${context}\n${emailSchemaParser.getFormatInstructions()}\nThis is very important to my career.`;
+export const systemPrompt = `${context}\n${emailSchemaParser.getFormatInstructions()}\nThis is very important to my career.`;
