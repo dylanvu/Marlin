@@ -129,7 +129,7 @@ async function runPrompt(
 ): Promise<LLMResponseType | null> {
   try {
     const session = await chrome.aiOriginTrial.languageModel.create(params);
-    const tokenCount = await session.countTokens(prompt);
+    const tokenCount = await session.countPromptTokens(prompt);
     console.log(`Prompt tokens: ${tokenCount}`);
 
     const res = await session.prompt(prompt);
