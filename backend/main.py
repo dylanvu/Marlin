@@ -23,7 +23,7 @@ async def root():
 
 @app.post("/prompt/")
 async def clean_email(email: Email):
-    return run_cleaning_pipeline(email.eml)
+    return run_cleaning_pipeline(email)
 
 
 @app.post("/analyze-local/")
