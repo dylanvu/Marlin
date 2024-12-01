@@ -1,5 +1,7 @@
 import { useState, useEffect } from "react";
 
+import { LLMObservationType, LLMResponseType } from "@src/global";
+
 function getColor(
   score: number,
   greenTolerance: number,
@@ -75,7 +77,7 @@ export default function Popup(): JSX.Element {
     };
 
     updateInferenceResult();
-    
+
     chrome.runtime.onMessage.addListener(handleOnMessage);
 
     return () => {

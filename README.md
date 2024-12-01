@@ -103,11 +103,11 @@ cd frontend
 1. Install the required packages using the following command:
 
 ```bash
-npm ci
+yarn install
 ```
 
 1. Run the Vite server using the following command:
 
 ```bash
-npm run dev
+yarn run dev
 ```

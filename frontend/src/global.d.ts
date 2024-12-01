@@ -61,6 +61,8 @@ const emailSchema = z.object({
   brief_reason: z.string().describe("brief reason for the determination"),
 });
 
+type LLMObservationType = z.infer<typeof observationSchema>;
+
 type LLMResponseType = z.infer<typeof emailSchema>;
 
 export const emailSchemaParser =

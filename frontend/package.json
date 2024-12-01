@@ -13,10 +13,11 @@
   },
   "type": "module",
   "dependencies": {
+    "@langchain/core": "^0.3.19",
     "axios": "^1.7.7",
-    "langchain": "^0.3.6",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
+    "react-spinners": "^0.14.1",
     "webextension-polyfill": "^0.12.0",
     "zod": "^3.23.8"
   },
