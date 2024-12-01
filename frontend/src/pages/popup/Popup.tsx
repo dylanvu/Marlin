@@ -1,5 +1,7 @@
 import { useState, useEffect } from "react";
 
+import { PulseLoader } from "react-spinners";
+
 import { LLMObservationType, LLMResponseType } from "@src/global";
 
 function getColor(
@@ -96,7 +98,7 @@ export default function Popup(): JSX.Element {
       <div className="w-64 h-px bg-black" />
 
       {/* Primary color indicator */}
-      {LLMResponse && (
+      {LLMResponse ? (
         <>
           <div
             className={`w-64 h-24 flex items-center justify-center rounded-md ${getPhishingScoreColors(
@@ -145,6 +147,10 @@ export default function Popup(): JSX.Element {
             )}
           </div>
         </>
+      ) : (
+        <div className="flex items-center justify-center">
+          <PulseLoader color="#0000ff" speedMultiplier={0.5} />
+        </div>
       )}
     </div>
   );
