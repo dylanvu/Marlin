@@ -64,11 +64,14 @@ function handleProcessEML(eml: string) {
 
       let userPrompt = `Email: ${cleaned_eml}\nAnswer: `;
       let result: LLMResponseType | null = null;
+
+      console.time("LLM inference");
       try {
         result = await runPrompt(userPrompt, params);
       } catch (e) {
         console.error("Error in processing LLM locally:", e);
       }
+      console.timeEnd("LLM inference");
 
       if (!result) {
         result = {
