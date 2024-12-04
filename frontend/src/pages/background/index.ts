@@ -5,7 +5,8 @@ import axios from "axios";
 import type { GeminiParams, LLMResponseType } from "@src/global.d.ts";
 import { systemPrompt, emailSchemaParser } from "@src/global.d.js";
 
-const API_URL = "http://127.0.0.1:8000/prompt/";
+const API_URL =
+  "https://web-yl4c6lv7l8o8.up-de-fra1-k8s-1.apps.run-on-seenode.com/prompt/";
 let isLoading = false;
 let lastURL = "";
 
