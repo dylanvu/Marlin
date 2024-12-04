@@ -27,18 +27,25 @@ from bs4 import BeautifulSoup
 from urllib.parse import urlparse
 from email.message import Message
 from email.parser import HeaderParser
+from pydantic import BaseModel
 
 
-def cleaning_pipeline(eml_text: str):
-    em = email.message_from_string(eml_text)
-    headers = parse_headers(em)
-    payload = retrieve_payload(em)
+class Email(BaseModel):
+    eml: str  # the contents of the eml file to be analyzed
+    organization: str | None = None  # the enterprise id or personal id of the user
+
+
+def run_cleaning_pipeline(eml: Email):
+    eml_text = eml.eml
+    eml_msg = email.message_from_string(eml_text)
+    headers = parse_headers(eml_msg)
+    payload = retrieve_payload(eml_msg)
     cleaned_payload = clean_eml(headers + "\n" + payload)
     return cleaned_payload
 
 
-def parse_headers(eml_data: Message | str):
-    headers = HeaderParser().parsestr(eml_data.as_string())
+def parse_headers(eml_msg: Message):
+    headers = HeaderParser().parsestr(eml_msg.as_string())
     del_header_prefixes = [
         "X-",
         "DKIM",
@@ -59,15 +66,15 @@ def parse_headers(eml_data: Message | str):
     return json.dumps(dict(headers.items()), indent=4)
 
 
-def retrieve_payload(eml_data: Message | str):
-    if eml_data.is_multipart():
+def retrieve_payload(eml_msg: Message):
+    if eml_msg.is_multipart():
         payload = ""
-        for part in eml_data.get_payload():
+        for part in eml_msg.get_payload():
             payload += "\n" + retrieve_payload(part)
     else:
-        headers = HeaderParser().parsestr(eml_data.as_string())
+        headers = HeaderParser().parsestr(eml_msg.as_string())
         encoding = headers.get("Content-Transfer-Encoding")
-        payload = eml_data.get_payload()
+        payload = eml_msg.get_payload()
         if encoding == "base64":
             try:
                 payload = base64.b64decode(payload).decode()

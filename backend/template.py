@@ -10,20 +10,23 @@ class Observation(BaseModel):
 
 
 class Email(BaseModel):
-    is_phishing: bool = Field(
-        description="a boolean value indicating whether the email is phishing (true) or legitimate (false)"
-    )
-    phishing_score: int = Field(
-        "phishing risk confidence score as an integer on a scale from 0 to 10"
-    )
     brand_impersonated: str = Field(
         "brand name associated with the email, if applicable"
     )
     observations: list[Observation] = Field(...)
+    phishing_score: int = Field(
+        "phishing risk confidence score as an integer on a scale from 0 to 10"
+    )
+    is_phishing: bool = Field(
+        description="boolean value indicating whether the email is phishing (true) or legitimate (false)"
+    )
     brief_reason: str = Field("brief reason for the determination")
 
 
-CONTEXT = """I want you to act as a spam detector to determine whether a given email (in .eml format) is a phishing email or a legitimate email. Your analysis should be thorough and evidence-based. Phishing emails often impersonate legitimate brands and use social engineering techniques to deceive users. These techniques include, but are not limited to: fake rewards, fake warnings about account problems, and creating a sense of urgency or interest. Spoofing the sender's address and embedding deceptive HTML links are common tactics.
+CONTEXT = """I want you to act as a spam detector to determine whether a given email (in .eml format) is a phishing email or a legitimate email. 
+Your analysis should be thorough and evidence-based. Phishing emails often impersonate legitimate brands and use social engineering techniques to deceive users. 
+These techniques include, but are not limited to: fake rewards, fake warnings about account problems, and creating a sense of urgency or interest. 
+Spoofing the sender's address and embedding deceptive HTML links are common tactics.
 Analyze the email by following these steps:
 1. Identify any impersonation of well-known brands.
 2. Examine the email header for spoofing signs, such as the sender name or email address discrepancies. Evaluate the subject line for typical phishing characteristics (e.g., urgency, promise of reward). Note that the To address has been replaced with a dummy address.

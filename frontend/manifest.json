@@ -15,7 +15,11 @@
   "icons": {
     "256": "fish-256.png"
   },
-  "permissions": ["activeTab", "storage"],
+  "permissions": ["activeTab", "storage", "tabs", "aiLanguageModelOriginTrial"],
+  "trial_tokens": [
+    "AlWwMw3rAdpY9i2yhwUdyRl9S/6uG5HEfyYLdfSMFqlj6AhDWN1q3FG66golHF+xpZxvP+ZGOANsD+1Wt9PwRQgAAAB4eyJvcmlnaW4iOiJjaHJvbWUtZXh0ZW5zaW9uOi8vZGtsbGNqb2tiYmlhY2JwZmxnYXBibWNoZHBhYWJpZGciLCJmZWF0dXJlIjoiQUlQcm9tcHRBUElGb3JFeHRlbnNpb24iLCJleHBpcnkiOjE3NjA0ODYzOTl9"
+  ],
+  "minimum_chrome_version": "131",
   "content_scripts": [
     {
       "matches": ["https://*/*"],
@@ -25,11 +29,7 @@
   "devtools_page": "src/pages/devtools/index.html",
   "web_accessible_resources": [
     {
-      "resources": [
-        "contentStyle.css",
-        "fish-256.png",
-        "MarlinFishFont.png"
-      ],
+      "resources": ["contentStyle.css", "fish-256.png", "MarlinFishFont.png"],
       "matches": []
     }
   ]
